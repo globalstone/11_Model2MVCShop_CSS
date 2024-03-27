@@ -3,61 +3,73 @@
 
 <!--  ///////////////////////// JSTL  ////////////////////////// -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/sketchy/bootstrap.min.css" rel="stylesheet">
 
 <!-- Bootstrap 5 JS bundle (includes Popper.js) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
-	//============= logout Event  처리 =============
-	$(function() {
-		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-		$("#Logout").on("click" , function() {
-			$(self.location).attr("href","/user/logout");
-			//self.location = "/user/logout"
-		});
-	});
-
-	//============= 회원정보조회 Event  처리 =============
-	$(function() {
-		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-		$("a:contains('회원정보조회')").on("click" , function() {
-			//$(self.location).attr("href","/user/logout");
-			self.location = "/user/listUser"
-		});
-	});
-
-	//=============  개인정보조회회 Event  처리 =============
-	$( "#get" ).on("click" , function(event) {
-		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-		event.preventDefault();
-		$(self.location).attr("href","/user/getUser?userId=${sessionScope.user.userId}");
-	});
-
 	$(document).ready(function() {
-		$(".navbar-nav").css("justify-content", "flex-end"); // navbar-nav의 자식 요소를 우측 정렬
+		$("#brandLink").on("click", function(event) {
+			event.preventDefault();
+			self.location.href = "#";
+		});
+
+		$("#getUserLink").on("click", function(event) {
+			event.preventDefault();
+			var userId = "${sessionScope.user.userId}";
+			self.location.href = "/user/getUser?userId=" + userId;
+		});
+
+		$("#Logout").on("click", function(event) {
+			event.preventDefault();
+			$(self.location).attr("href", "/user/logout");
+		});
+
+		$(".dropdown-item").on("click", function(event) {
+			event.preventDefault();
+			var href = $(this).attr("href");
+
+			if (href === "#") {
+				// Handle dropdown toggle
+				$(this).dropdown("toggle");
+			} else {
+				// Redirect to the specified link
+				self.location.href = href;
+			}
+		});
 	});
 </script>
 <style>
+	.navbar {
+		position: fixed; /* 상단에 고정 */
+		top: 0; /* 상단 여백 없애기 */
+		width: 100%; /* 전체 너비로 설정 */
+		z-index: 1000; /* 다른 요소 위에 배치 */
+		padding-top: 0; /* 상단 여백 제거 */
+	}
+
 	.navbar-nav {
-		display: flex !important; /* flexbox로 변경 */
-		flex-direction: row !important; /* Navbar의 flex 방향을 row로 변경 */
+		display: flex !important;
+		flex-direction: row !important;
+		justify-content: flex-end !important; /* 우측 정렬만 여기서 설정 */
 	}
 
 	.navbar-nav .nav-link {
-		font-size: 16px; /* 원하는 크기로 조절하세요 */
+		font-size: 16px;
 	}
 
 	.navbar-brand {
-		font-size: 18px;  /* 원하는 크기로 조절하세요 */
+		font-size: 18px;
 	}
 </style>
-<nav class="navbar navbar-expand-lg bg-primary navbar-inverse navbar-fixed-top" data-bs-theme="dark">
-	<a class="navbar-brand" href="#" style="color: whitesmoke">Model2 MVC Shop</a>
+<nav class="navbar navbar-expand-lg bg-primary navbar-inverse fixed-top" data-bs-theme="dark">
+	<a class="navbar-brand" href="#" style="color: whitesmoke" id="brandLink">Model2 MVC Shop</a>
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -67,9 +79,9 @@
 				<a class="nav-link dropdown-toggle show" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
 					Membership management</a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="user/getUser?userId="+${user.userId} id = "get">개인정보조회</a>
+					<a class="dropdown-item" href="javascript:void(0);" id="getUserLink">개인정보조회</a>
 					<c:if test="${user.role == 'admin'}">
-					<a class="dropdown-item" href="#">회원정보 조회</a>
+						<a class="dropdown-item" href="#">회원정보 조회</a>
 					</c:if>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">etc...</a>
