@@ -12,12 +12,58 @@
 <!-- Bootstrap 5 JS bundle (includes Popper.js) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+<nav class="navbar navbar-expand-lg bg-primary navbar-inverse fixed-top" data-bs-theme="dark">
+	<a class="navbar-brand" href="#" style="color: whitesmoke" id="brandLink">Model2 MVC Shop</a>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="navbar-collapse collapse show" id="navbarColor01" style="">
+		<ul class="navbar-nav me-auto" style="justify-content: flex-end;">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle show" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+					Membership management</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="javascript:void(0);" id="getUserLink">개인정보조회</a>
+					<c:if test="${user.role == 'admin'}">
+						<a class="dropdown-item" href="javascript:void(0);">회원정보조회</a>
+					</c:if>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">etc...</a>
+				</div>
+			</li>
+			<c:if test="${user.role == 'admin'}">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle show" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">product management</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="javascript:void(0);">판매상품등록</a>
+						<a class="dropdown-item" href="javascript:void(0);">판매상품관리</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">etc...</a>
+					</div>
+				</li>
+			</c:if>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle show" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Product purchase</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="#">상품검색</a>
+					<a class="dropdown-item" href="#">구매이력조회</a>
+					<a class="dropdown-item" href="#">최근본상품</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">etc...</a>
+				</div>
+			</li>
+			<form class="d-flex ms-auto">
+				<button class="btn btn-secondary my-2 my-sm-0" type="submit" id="Logout">Log out</button>
+			</form>
+		</ul>
+	</div>
+</nav>
+
 <script type="text/javascript">
 
 	$(document).ready(function() {
 		$("#brandLink").on("click", function(event) {
-			event.preventDefault();
-			self.location.href = "#";
+			self.location.href = "/main.jsp";
 		});
 
 		$("#getUserLink").on("click", function(event) {
@@ -31,17 +77,35 @@
 			$(self.location).attr("href", "/user/logout");
 		});
 
-		$(".dropdown-item").on("click", function(event) {
-			event.preventDefault();
-			var href = $(this).attr("href");
+		$(document).ready(function() {
+			$(".dropdown-item").on("click", function (event) {
+				event.preventDefault();
+				var href = $(this).attr("href");
 
-			if (href === "#") {
-				// Handle dropdown toggle
-				$(this).dropdown("toggle");
-			} else {
-				// Redirect to the specified link
-				self.location.href = href;
-			}
+				if (href === "#") {
+					// Handle dropdown toggle
+					$(this).dropdown("toggle");
+				} else {
+					// Redirect to the specified link
+					self.location.href = href;
+				}
+			});
+		});
+
+		$(function() {
+			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$("a:contains('회원정보조회')").on("click" , function() {
+				//$(self.location).attr("href","/user/logout");
+				self.location = "/user/listUser"
+			});
+		});
+
+		$(function() {
+			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$("a:contains('판매상품등록')").on("click" , function() {
+				//$(self.location).attr("href","/user/logout");
+				self.location = "/product/addProduct"
+			});
 		});
 	});
 </script>
@@ -68,49 +132,3 @@
 		font-size: 18px;
 	}
 </style>
-<nav class="navbar navbar-expand-lg bg-primary navbar-inverse fixed-top" data-bs-theme="dark">
-	<a class="navbar-brand" href="#" style="color: whitesmoke" id="brandLink">Model2 MVC Shop</a>
-	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="navbar-collapse collapse show" id="navbarColor01" style="">
-		<ul class="navbar-nav me-auto" style="justify-content: flex-end;">
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle show" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
-					Membership management</a>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="javascript:void(0);" id="getUserLink">개인정보조회</a>
-					<c:if test="${user.role == 'admin'}">
-						<a class="dropdown-item" href="#">회원정보 조회</a>
-					</c:if>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">etc...</a>
-				</div>
-			</li>
-			<c:if test="${user.role == 'admin'}">
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle show" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">product management</a>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">판매상품 등록</a>
-						<a class="dropdown-item" href="#">판매상품 관리</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">etc...</a>
-					</div>
-				</li>
-			</c:if>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle show" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Product purchase</a>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">상품검색</a>
-					<a class="dropdown-item" href="#">구매이력조회</a>
-					<a class="dropdown-item" href="#">최근본상품</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">etc...</a>
-				</div>
-			</li>
-			<form class="d-flex ms-auto">
-				<button class="btn btn-secondary my-2 my-sm-0" type="submit" id="Logout">Log out</button>
-			</form>
-		</ul>
-	</div>
-</nav>
