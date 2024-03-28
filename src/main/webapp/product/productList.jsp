@@ -25,339 +25,191 @@
 <head>
 <title>상품 목록조회</title>
 
-<link rel="stylesheet" href="/css/admin.css" type="text/css">
-	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="icon" href="../../favicon.ico">
-	<link rel="canonical" href="https://getbootstrap.com/docs/3.3/examples/carousel/">
+	<!-- jQuery -->
+<%--	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
+
+<%--	<link rel="stylesheet" href="/css/admin.css" type="text/css">--%>
+<%--	<meta charset="utf-8">--%>
+<%--	<meta http-equiv="X-UA-Compatible" content="IE=edge">--%>
+<%--	<meta name="viewport" content="width=device-width, initial-scale=1">--%>
+<%--	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->--%>
+<%--	<meta name="description" content="">--%>
+<%--	<meta name="author" content="">--%>
+<%--	<link rel="icon" href="../../favicon.ico">--%>
+<%--	<link rel="canonical" href="https://getbootstrap.com/docs/3.3/examples/carousel/">--%>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css" integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" crossorigin="anonymous">
+
+	<!-- 테마 -->
+	<%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">--%>
+
+	<%--    <!-- 자바스크립트 -->--%>
+	<%--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>--%>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+
+<%--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >--%>
+<%--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >--%>
+<%--	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>--%>
+<%--	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>--%>
+<%--	<link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/sketchy/bootstrap.min.css" rel="stylesheet">--%>
+
+<%--	<!-- Bootstrap 5 JS bundle (includes Popper.js) -->--%>
+<%--	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>--%>
+
+<%--	<!-- Bootstrap Dropdown Hover CSS -->--%>
+<%--	<link href="/css/animate.min.css" rel="stylesheet">--%>
+<%--	<link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">--%>
+
+<%--	<!-- Bootstrap Dropdown Hover JS -->--%>
+<%--	<script src="/javascript/bootstrap-dropdownhover.min.js"></script>--%>
+
 
 	<title>Carousel Template for Bootstrap</title>
 
 	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<%--	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">--%>
+<%--	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>--%>
 
-	<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-	<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-	<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+<%--	<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->--%>
+<%--	<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->--%>
+<%--	<script src="../../assets/js/ie-emulation-modes-warning.js"></script>--%>
 
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	<script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<%--	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->--%>
+<%--	<!--[if lt IE 9]>--%>
+<%--	<script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>--%>
+<%--	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>--%>
 	<![endif]-->
 
-	<!-- Custom styles for this template -->
-	<link href="carousel.css" rel="stylesheet">
+<%--	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
+<%--	<!-- Bootstrap CSS -->--%>
+<%--	<link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/sketchy/bootstrap.min.css" rel="stylesheet">--%>
+
+<%--	<!-- Bootstrap 5 JS bundle (includes Popper.js) -->--%>
+<%--	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>--%>
+
+<%--	<!-- Custom styles for this template -->--%>
+<%--	<link href="carousel.css" rel="stylesheet">--%>
 </head>
 <script type="text/javascript">
+	$(document).ready(function() {
 
-	function fncGetUserList(currentPage) {
-		// document.getElementById("currentPage").value = currentPage;
-		$("#currentPage").val(currentPage)
-		// document.detailForm.submit();
-		$('form[name = manageList]').attr("method","POST").attr("action","/product/listProduct/manage").submit();
-		$('form[name = searchList]').attr("method","POST").attr("action","/product/listProduct/search").submit();
-		// $("form").attr("method" , "POST").attr("action" , "/product/listProduct/{menu}").submit();
-	}
+		var isLoading = false;
+		var isEndOfData = false;
+		var currentPage = 2;  // 현재 페이지를 2로 설정
+		var pageSize = 8;
+		var dallor = 36;
 
-	$(function () {
-		$("td.ct_btn01:contains('검색')").on("click", function () {
-			//Debug..
-			//alert(  $( "td.ct_btn01:contains('검색')" ).html() );
-			fncGetUserList(1);
-		});
+		function loadMoreProducts() {
+			if (!isLoading && !isEndOfData) {
+				isLoading = true;
 
-		$(".ct_list_pop").each(function() {
-			$(this).find("td:nth-child(3)").on("click", function() {
-				var prodNo = $(this).data("prodno");
-				var form = $('form[name = manageList]');
-				form.attr("action", "/product/updateProduct/" + prodNo + "/manage");
-				form.submit();
-			});
-		});
+				$.ajax({
+					url: "/product/json/listProduct/search",
+					method: "GET",
+					data: {
+						currentPage: currentPage,
+						pageSize: pageSize
+					},
+					dataType: "json",
+					success: function(data) {
+						var prod = data.productList;
+						if (prod.length === 0) {
+							isEndOfData = true;
+							return;
+						}
+						for (var i = 0; i < prod.length; i++) {
+							var product = prod[i];
+							var row = '<div class = "col-md-4">' +
+									  '<div class = "card mb-3">' +
+									  '<h3 class = "card-header">' + ((currentPage - 1) * pageSize + i + 1) + '</h3>' +
+									  '<div class = "card-body">' +
+									  '<h5 class ="card-title">' + product.prodName + '</h5>' +
+									  '</div>' +
+									  '<img src = "/images/uploadFiles/' + product.fileName + '" alt = "Product Image" width="100%" height="200">' +
+									  '<div class = "card-body">' +
+									  '<p class = "card-text">' + product.prodDetail + '</p>' +
+									  '</div>' +
+									  '<ul class = "input-group-text">' +
+									  '<span class ="input-group-text">' + String.fromCharCode(dallor) + '</span>' +
+									  '<input class = "form-control" id = "readOnlyInput" type="text" placeholder="' + product.price + '" readonly="">' +
+									  '</ul>' +
+									  '<div class = "card-body">' +
+									  '<a href = "/purchase/addPurchase/' + product.prodNo + '" class = "card-link"> Buy </a>' +
+									  '<a href = "#" class = "card-link"> Wish </a>' +
+									  '</div>' +
+									  '<div class = "card-footer text-muted">' +
+									   product.regDate +
+									  '</div>' +
+									  '</div>' +
+									  '</div>';
+							$('.row').append(row);
+						}
+						isLoading = false;
+						currentPage++;
+					},
+					error: function() {
+						isLoading = false;
+					}
+				});
+			}
+		}
 
-		$(".ct_list_pop").each(function() {
-			$(this).find("td:nth-child(3)").on("click", function() {
-				var prodNo = $(this).data("prodno");
-				var form = $('form[name = searchList]');
-				form.attr("action", "/product/getProduct/" + prodNo + "/search");
-				form.submit();
-			});
+		loadMoreProducts();  // 초기에 한 번 데이터 로드
+
+		$(window).scroll(function() {
+			var $window = $(this);
+			var scrollTop = $window.scrollTop(); // 스크롤바 위치
+			var windowHeight = $window.height(); //window의 높이
+			var documentHeight = $(document).height(); //전체 높이
+			console.log("scroll")
+
+			if (scrollTop + windowHeight >= documentHeight - 100) {
+				loadMoreProducts();
+			}
 		});
 	});
-
 </script>
 <style>
-	.img-circle{
-		background-color : grey;
-	}
-	.img-circle {
-		border-radius: 80%;
+	body {
+		padding-top: 70px;
 	}
 </style>
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
-
-	<div style="width: 98%; margin-left: 10px;">
-
-			<c:if test="${ menu =='manage' }">
-		<form name="manageList">
-
-			<table width="100%" height="37" border="0" cellpadding="0"
-				cellspacing="0">
-				<tr>
-					<td width="15" height="37"><img src="/images/ct_ttl_img01.gif"
-						width="15" height="37" /></td>
-					<td background="/images/ct_ttl_img02.gif" width="100%"
-						style="padding-left: 10px;">
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-							<tr>
-								<td width="93%" class="ct_ttl01">상품 관리</td>
-							</tr>
-						</table>
-					</td>
-					<td width="12" height="37"><img src="/images/ct_ttl_img03.gif"
-						width="12" height="37" /></td>
-				</tr>
-			</table>
-
-
-			<table width="100%" border="0" cellspacing="0" cellpadding="0"
-				style="margin-top: 10px;">
-				<tr>
-					
-					<td align="right"><select name="searchCondition"
-						class="ct_input_g" style="width: 80px">
-							<option value="1" ${ ! empty search.searchCondition && search.searchCondition==1 ? "selected" : "" } >상품명</option>
-					</select> <input type="text" name="searchKeyword" value="${ search.searchKeyword }" class="ct_input_g"
-						style="width: 200px; height: 19px" /></td>
-							
-					<td align="right" width="70">
-						<table border="0" cellspacing="0" cellpadding="0">
-							<tr>
-								<td width="17" height="23"><img
-									src="/images/ct_btnbg01.gif" width="17" height="23"></td>
-								<td background="/images/ct_btnbg02.gif" class="ct_btn01"
-									style="padding-top: 3px;">
-									<!--<a href="javascript:fncGetProductList('1');">검색</a>-->
-									검색
-								</td>
-								<td width="14" height="23"><img
-									src="/images/ct_btnbg03.gif" width="14" height="23"></td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-
-
-			<table width="100%" border="0" cellspacing="0" cellpadding="0"
-				style="margin-top: 10px;">
-				<tr>
-					<td colspan="11">전체 ${ resultPage.totalCount } 건수, 현재 ${ resultPage.currentPage } 페이지
-					</td>
-				</tr>
-				<tr>
-					<td class="ct_list_b" width="100">No</td>
-					<td class="ct_line02"></td>
-					<td class="ct_list_b" width="150">상품명</td>
-					<td class="ct_line02"></td>
-					<td class="ct_list_b" width="150">가격</td>
-					<td class="ct_line02"></td>
-					<td class="ct_list_b">등록일</td>
-					<td class="ct_line02"></td>
-					<td class="ct_list_b">현재상태</td>
-				</tr>
-				<tr>
-					<td colspan="11" bgcolor="808285" height="1"></td>
-				</tr>
-				
-				<c:set var="i" value="0"/>
-				<c:forEach var="prod" items="${list}">
-					<c:set var='i' value="${i+1}"/> 
-				<tr class="ct_list_pop">
-					<td align="center">${ i }</td>
-					<td></td>
-
-					<td align="left" data-prodno="${prod.prodNo}">
-<%--					<a href="/product/updateProduct/${ prod.prodNo }/${ menu }">${ prod.prodName }</a>--%>
-						${prod.prodName}
-					</td>
-
-					<td></td>
-					<td align="left">${ prod.price }</td>
-					<td></td>
-					<td align="left">${ prod.manuDate }</td>
-					<td></td>
-					<td align="left"><c:if test="${ ! empty prod.proTranCode }">
-									 <c:if test="${ fn:trim(prod.proTranCode)==1}">
-									 	구매완료 <a href="/purchase/updateTranCode?prodNo=${ prod.prodNo }&tranCode=2">배송하기</a>
-									 </c:if>
-									 <c:if test="${ fn:trim(prod.proTranCode)==2}">
-									 	배송중
-									 </c:if>
-									 <c:if test="${ fn:trim(prod.proTranCode)==3}">
-									 	배송완료
-									 </c:if>
-									 </c:if>
-									 <c:if test="${ empty prod.proTranCode }">
-									 	판매중
-									 </c:if>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="11" bgcolor="D6D7D6" height="1"></td>
-				</tr>
-				</c:forEach>
-			</table>
-
-			<table width="100%" border="0" cellspacing="0" cellpadding="0"
-				style="margin-top: 10px;">
-				<tr>
-					<td align="center">
-						<input type= "hidden" id = "currentPage" name="currentPage" value = ""/>
-					
-					<jsp:include page="../common/pageNavigator.jsp"/>
-					
-					</td>
-				</tr>
-			</table>
-			<!--  페이지 Navigator 끝 -->
-
-		</form>
-		
-		</c:if>
-		<c:if test="${ menu=='search'}">
-		<form name="searchList"  data-prodno="${prod.prodNo}">
-
-			<table width="100%" height="37" border="0" cellpadding="0"
-				cellspacing="0">
-				<tr>
-					<td width="15" height="37"><img src="/images/ct_ttl_img01.gif"
-						width="15" height="37" /></td>
-					<td background="/images/ct_ttl_img02.gif" width="100%"
-						style="padding-left: 10px;">
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-							<tr>
-								<td width="93%" class="ct_ttl01">상품 목록조회</td>
-							</tr>
-						</table>
-					</td>
-					<td width="12" height="37"><img src="/images/ct_ttl_img03.gif"
-						width="12" height="37" /></td>
-				</tr>
-			</table>
-
-
-			<table width="100%" border="0" cellspacing="0" cellpadding="0"
-				style="margin-top: 10px;">
-				<tr>
-					<td align="right"><select name="searchCondition"
-						class="ct_input_g" style="width: 80px">
-							<option value="1" ${ !empty search.searchCondition && search.searchCondition == 1 ? "selected" : "" } >상품명</option>
-					</select> <input type="text" name="searchKeyword" value="${ search.searchKeyword }" class="ct_input_g"
-						style="width: 200px; height: 19px" /></td>
-					<td align="right" width="70">
-						<table border="0" cellspacing="0" cellpadding="0">
-							<tr>
-								<td width="17" height="23"><img
-									src="/images/ct_btnbg01.gif" width="17" height="23"></td>
-								<td background="/images/ct_btnbg02.gif" class="ct_btn01"
-									style="padding-top: 3px;">
-									<!--<a href="javascript:fncGetUserList('1');">검색</a>-->
-									검색
-								</td>
-								<td width="14" height="23"><img
-									src="/images/ct_btnbg03.gif" width="14" height="23"></td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-
-
-			<table width="100%" border="0" cellspacing="0" cellpadding="0"
-				style="margin-top: 10px;">
-				<tr>
-					<td colspan="11">전체 ${ resultPage.totalCount } 건수, 현재 ${ resultPage.currentPage } 페이지
-					</td>
-				</tr>
-				<tr>
-					<td class="ct_list_b" width="100">No</td>
-					<td class="ct_line02"></td>
-					<td class="ct_list_b" width="150">상품명</td>
-					<td class="ct_line02"></td>
-					<td class="ct_list_b" width="150">가격</td>
-					<td class="ct_line02"></td>
-					<td class="ct_list_b">등록일</td>
-					<td class="ct_line02"></td>
-					<td class="ct_list_b">상품 이미지</td>
-					<td class="ct_line02"></td>
-					<td class="ct_list_b">현재상태</td>
-				</tr>
-				<tr>
-					<td colspan="11" bgcolor="808285" height="1"></td>
-				</tr>
-				<c:set var="i" value="0" />
-				<c:forEach var="prod" items="${list}">
-				<c:set var="i" value="${ i+1 }" />
-				<div class="container marketing">
-				<tr class="ct_list_pop">
-					<td align="center">${ i }</td>
-					<td></td>
-
-					<td align="left" data-prodno="${prod.prodNo}">
-<%--						<a href="/product/getProduct/${ prod.prodNo }/${ menu }">${ prod.prodName }</a>--%>
-						${prod.prodName}
-					</td>
-
-					<td></td>
-					<td align="left">${ prod.price }</td>
-					<td></td>
-					<td align="left">${ prod.manuDate }</td>
-					<td></td>
-					<td align="center"><img class="img-circle" src="/images/uploadFiles/${prod.fileName }" alt="Generic placeholder image" width="140" height="140"></td>
-					<td></td>
-					<td align="left"><c:if test="${ !empty prod.proTranCode }">
-									 <c:if test="${ fn:trim(prod.proTranCode)==3 }">
-											재고없음
-									</c:if>
-									 <c:if test="${ fn:trim(prod.proTranCode) !=3 }">
-										재고없음
-									</c:if>
-									</c:if>
-									<c:if test="${ empty prod.proTranCode }">
-										판매중
-									</c:if>
-					</td>
-				</tr>
-				<td colspan="11" bgcolor="D6D7D6" height="1"></td>
-				</tr>
+<jsp:include page="/layout/toolbar.jsp" />
+	<div class="container">
+		<div class="row">
+			<c:set var="i" value="0"/>
+			<c:forEach var="prod" items="${list}">
+				<c:set var='i' value="${i+1}"/>
+				<div class="col-md-4">
+					<div class="card mb-3">
+						<h3 class="card-header">${i}</h3>
+						<div class="card-body">
+							<h5 class="card-title">${prod.prodName}</h5>
+						</div>
+						<img src="/images/uploadFiles/${prod.fileName}" alt="Product Image" width="100%" height="200">
+						<div class="card-body">
+							<p class="card-text">${prod.prodDetail}</p>
+						</div>
+						<ul class="input-group-text">
+							<span class="input-group-text">$</span>
+							<input class="form-control" id="readOnlyInput" type="text" placeholder=${prod.price} readonly="">
+						</ul>
+						<div class="card-body">
+							<a href="/product/buy/${prod.prodNo}" class="card-link">Buy</a>
+							<a href="/product/wishlist/${prod.prodNo}" class="card-link">Whish</a>
+						</div>
+						<div class="card-footer text-muted">
+								${prod.regDate}
+						</div>
+					</div>
 				</div>
-				</c:forEach>
-			</table>
-
-			<table width="100%" border="0" cellspacing="0" cellpadding="0"
-				style="margin-top: 10px;">
-				<tr>
-					<td align="center">
-						<input type="hidden" id="currentPage" name="currentPage" value=""/>
-						<jsp:include page="../common/pageNavigator.jsp" />
-						
-					</td>
-				</tr>
-			</table>
-			<!--  페이지 Navigator 끝 -->
-			</c:if>
-		</form>
+			</c:forEach>
+		</div>
 	</div>
-
 </body>
 </html>
