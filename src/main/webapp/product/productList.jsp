@@ -24,163 +24,189 @@
 <html>
 <head>
 <title>상품 목록조회</title>
-
-	<!-- jQuery -->
-<%--	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
-
-<%--	<link rel="stylesheet" href="/css/admin.css" type="text/css">--%>
-<%--	<meta charset="utf-8">--%>
-<%--	<meta http-equiv="X-UA-Compatible" content="IE=edge">--%>
-<%--	<meta name="viewport" content="width=device-width, initial-scale=1">--%>
-<%--	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->--%>
-<%--	<meta name="description" content="">--%>
-<%--	<meta name="author" content="">--%>
-<%--	<link rel="icon" href="../../favicon.ico">--%>
-<%--	<link rel="canonical" href="https://getbootstrap.com/docs/3.3/examples/carousel/">--%>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css" integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" crossorigin="anonymous">
-
-	<!-- 테마 -->
-	<%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">--%>
-
-	<%--    <!-- 자바스크립트 -->--%>
-	<%--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>--%>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-
-<%--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >--%>
-<%--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >--%>
-<%--	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>--%>
-<%--	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>--%>
-<%--	<link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/sketchy/bootstrap.min.css" rel="stylesheet">--%>
-
-<%--	<!-- Bootstrap 5 JS bundle (includes Popper.js) -->--%>
-<%--	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>--%>
-
-<%--	<!-- Bootstrap Dropdown Hover CSS -->--%>
-<%--	<link href="/css/animate.min.css" rel="stylesheet">--%>
-<%--	<link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">--%>
-
-<%--	<!-- Bootstrap Dropdown Hover JS -->--%>
-<%--	<script src="/javascript/bootstrap-dropdownhover.min.js"></script>--%>
-
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css" integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
 
 	<title>Carousel Template for Bootstrap</title>
-
-	<!-- Bootstrap core CSS -->
-<%--	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">--%>
-<%--	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>--%>
-
-<%--	<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->--%>
-<%--	<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->--%>
-<%--	<script src="../../assets/js/ie-emulation-modes-warning.js"></script>--%>
-
-<%--	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->--%>
-<%--	<!--[if lt IE 9]>--%>
-<%--	<script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>--%>
-<%--	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>--%>
-	<![endif]-->
-
-<%--	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
-<%--	<!-- Bootstrap CSS -->--%>
-<%--	<link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/sketchy/bootstrap.min.css" rel="stylesheet">--%>
-
-<%--	<!-- Bootstrap 5 JS bundle (includes Popper.js) -->--%>
-<%--	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>--%>
-
-<%--	<!-- Custom styles for this template -->--%>
-<%--	<link href="carousel.css" rel="stylesheet">--%>
 </head>
 <script type="text/javascript">
-	$(document).ready(function() {
 
-		var isLoading = false;
-		var isEndOfData = false;
-		var currentPage = 2;  // 현재 페이지를 2로 설정
-		var pageSize = 8;
-		var dallor = 36;
+	function fncGetUserList(currentPage,menu) {
+		// document.getElementById("currentPage").value = currentPage;
+		// document.detailForm.submit();
+		$("#currentPage").val(currentPage);
 
-		function loadMoreProducts() {
-			if (!isLoading && !isEndOfData) {
-				isLoading = true;
+		if (menu === 'search') {
+			$('form[name="searchList"]').attr("method", "POST").attr("action", "/product/listProduct/search").submit();
+		} else if (menu === 'manage') {
+			$('form[name="manageList"]').attr("method", "POST").attr("action", "/product/listProduct/manage").submit();
+		}
+	}
 
+	$(function () {
+		$("#button-addon2").on("click", function () {
+			//Debug..
+			//alert(  $( "td.ct_btn01:contains('검색')" ).html() );
+			var menu = '${menu}';
+			$("#currentPage").val(1); // 검색 시 첫 페이지로 설정
+			fncGetUserList(1,menu);
+		});
+	});
+
+		$(document).ready(function () {
+
+			var isLoading = false;
+			var isEndOfData = false;
+			var currentPage = 2;  // 현재 페이지를 2로 설정
+			var pageSize = 8;
+			var dallor = 36;
+
+			function loadMoreProducts() {
+				if (!isLoading && !isEndOfData) {
+					isLoading = true;
+
+					$.ajax({
+						url: "/product/json/listProduct/search",
+						method: "GET",
+						data: {
+							currentPage: currentPage,
+							pageSize: pageSize
+						},
+						dataType: "json",
+						success: function (data) {
+							var prod = data.productList;
+							if (prod.length === 0) {
+								isEndOfData = true;
+								return;
+							}
+							for (var i = 0; i < prod.length; i++) {
+								var product = prod[i];
+								var time = product.regDate;
+								var productDate = new Date(time);
+								var today = new Date();
+								var times = Math.abs(today.getTime() - productDate.getTime());
+								var days = Math.ceil(times / (1000 * 3600 * 24) - 1);
+								var row = '<div class = "col-md-4">' +
+										'<div class = "card mb-3">' +
+										'<h3 class = "card-header">' + ((currentPage - 1) * pageSize + i + 1) + '</h3>' +
+										'<div class = "card-body">' +
+										'<h5 class ="card-title">' + product.prodName + '</h5>' +
+										'</div>' +
+										'<img src = "/images/uploadFiles/' + product.fileName + '" alt = "Product Image" width="100%" height="200">' +
+										'<div class = "card-body">' +
+										'<p class = "card-text">' + product.prodDetail + '</p>' +
+										'</div>' +
+										'<ul class = "input-group-text">' +
+										'<span class ="input-group-text">' + String.fromCharCode(dallor) + '</span>' +
+										'<input class = "form-control" id = "readOnlyInput" type="text" placeholder="' + product.price + '" readonly="">' +
+										'</ul>' +
+										'<div class = "card-body">' +
+										'<a href = "/purchase/addPurchase/' + product.prodNo + '" class = "card-link"> Buy </a>' +
+										'<a href = "#" class = "card-link"> Wish </a>' +
+										'</div>' +
+										'<div class = "card-footer text-muted">' +
+										days + 'days ago' +
+										'</div>' +
+										'</div>' +
+										'</div>';
+								$('.row').append(row);
+							}
+							isLoading = false;
+							currentPage++;
+						},
+						error: function () {
+							isLoading = false;
+						}
+					});
+				}
+			}
+
+			// loadMoreProducts();  // 초기에 한 번 데이터 로드
+			var $window = $(window);
+			var $document = $(document);
+
+			$window.scroll(function() {
+				var scrollTop = $window.scrollTop(); // 스크롤바 위치
+				var viewportHeight = window.innerHeight; // 브라우저 창의 뷰포트 높이
+				var documentHeight = $document.height(); // 전체 문서의 높이
+
+				console.log("Scroll Top: ", scrollTop);
+				console.log("Viewport Height: ", viewportHeight);
+				console.log("Document Height: ", documentHeight);
+
+				if (scrollTop + viewportHeight >= documentHeight * 0.7) {
+					console.log("Reached the bottom of the page");
+					// 데이터 로드 로직을 여기에 추가
+					loadMoreProducts();
+				}
+			});
+
+
+			$(document).ready(function () {
+				$('.card-footer').each(function () {
+					var timestamp = $(this).text(); // prod.regDate 값을 가져옵니다.
+					var date = new Date(timestamp); // Unix timestamp를 Date 객체로 변환합니다.
+					var formattedDate = date.getFullYear() + '-' + (date.getMonth() + 1).toString().padStart(2, '0') + '-' + date.getDate().toString().padStart(2, '0');
+					$(this).text(formattedDate); // 'yyyy-mm-dd' 형식의 날짜로 변환한 값을 설정합니다.
+				});
+			});
+
+			$(document).ready(function() {
+				// 전체 상품 데이터를 저장할 배열
+				var allProducts = [];
+
+				// 서버에서 전체 상품 데이터를 가져옵니다.
 				$.ajax({
 					url: "/product/json/listProduct/search",
 					method: "GET",
-					data: {
-						currentPage: currentPage,
-						pageSize: pageSize
-					},
 					dataType: "json",
-					success: function(data) {
-						var prod = data.productList;
-						if (prod.length === 0) {
-							isEndOfData = true;
-							return;
-						}
-						for (var i = 0; i < prod.length; i++) {
-							var product = prod[i];
-							var row = '<div class = "col-md-4">' +
-									  '<div class = "card mb-3">' +
-									  '<h3 class = "card-header">' + ((currentPage - 1) * pageSize + i + 1) + '</h3>' +
-									  '<div class = "card-body">' +
-									  '<h5 class ="card-title">' + product.prodName + '</h5>' +
-									  '</div>' +
-									  '<img src = "/images/uploadFiles/' + product.fileName + '" alt = "Product Image" width="100%" height="200">' +
-									  '<div class = "card-body">' +
-									  '<p class = "card-text">' + product.prodDetail + '</p>' +
-									  '</div>' +
-									  '<ul class = "input-group-text">' +
-									  '<span class ="input-group-text">' + String.fromCharCode(dallor) + '</span>' +
-									  '<input class = "form-control" id = "readOnlyInput" type="text" placeholder="' + product.price + '" readonly="">' +
-									  '</ul>' +
-									  '<div class = "card-body">' +
-									  '<a href = "/purchase/addPurchase/' + product.prodNo + '" class = "card-link"> Buy </a>' +
-									  '<a href = "#" class = "card-link"> Wish </a>' +
-									  '</div>' +
-									  '<div class = "card-footer text-muted">' +
-									   product.regDate +
-									  '</div>' +
-									  '</div>' +
-									  '</div>';
-							$('.row').append(row);
-						}
-						isLoading = false;
-						currentPage++;
+					success: function (data) {
+						allProducts = data.productList.map(function (product) {
+							return product.prodName;
+						});
+
+						// 자동완성 기능을 적용합니다.
+						$("#productInput").autocomplete({
+							source: allProducts,
+							minLength: 1  // 최소 2글자부터 자동완성을 활성화합니다.
+						});
 					},
-					error: function() {
-						isLoading = false;
+					error: function () {
+						console.error("상품 목록을 불러오는데 실패했습니다.");
 					}
 				});
-			}
-		}
-
-		loadMoreProducts();  // 초기에 한 번 데이터 로드
-
-		$(window).scroll(function() {
-			var $window = $(this);
-			var scrollTop = $window.scrollTop(); // 스크롤바 위치
-			var windowHeight = $window.height(); //window의 높이
-			var documentHeight = $(document).height(); //전체 높이
-			console.log("scroll")
-
-			if (scrollTop + windowHeight >= documentHeight - 100) {
-				loadMoreProducts();
-			}
+			});
 		});
-	});
 </script>
 <style>
 	body {
-		padding-top: 70px;
+		padding-top: 90px;
 	}
 </style>
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
+
 <jsp:include page="/layout/toolbar.jsp" />
+<form name = "searchList">
+ <c:if test = "${menu == 'search'}">
 	<div class="container">
+		<div class="row1">
+			<div class="col-md-12">
+				<div class="input-group mb-3">
+					<select name="searchCondition"
+							class="ct_input_g" style="width: 80px">
+						<option value="1" ${ ! empty search.searchCondition && search.searchCondition==1 ? "selected" : "" } >상품명</option>
+						<input type="text" id = "productInput" name="searchKeyword" value="${ search.searchKeyword }" class="form-control" placeholder="상품명을 입력해주세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+						<button class="btn btn-primary" type="button" id="button-addon2">Search</button>
+						<input type= "hidden" id = "currentPage" name="currentPage" value = ""/>
+					</select>
+				</div>
+			</div>
+		</div>
 		<div class="row">
 			<c:set var="i" value="0"/>
 			<c:forEach var="prod" items="${list}">
@@ -211,5 +237,42 @@
 			</c:forEach>
 		</div>
 	</div>
+ </c:if>
+</form>
+
+<form name = "manageList">
+<c:if test = "${menu == 'manage'}">
+	<div class="container">
+		<div class="row">
+			<c:set var="i" value="0"/>
+			<c:forEach var="prod" items="${list}">
+				<c:set var='i' value="${i+1}"/>
+				<div class="col-md-4">
+					<div class="card mb-3">
+						<h3 class="card-header">
+								${i}
+							<a href="/product/updateProduct/${ prod.prodNo }/${ menu }" style="float: right;" id = "Edit">Edit</a>
+						</h3>
+						<div class="card-body">
+							<h5 class="card-title">${prod.prodName}</h5>
+						</div>
+						<img src="/images/uploadFiles/${prod.fileName}" alt="Product Image" width="100%" height="200">
+						<div class="card-body">
+							<p class="card-text">${prod.prodDetail}</p>
+						</div>
+						<ul class="input-group-text">
+							<span class="input-group-text">$</span>
+							<input class="form-control" id="readOnlyInput" type="text" placeholder=${prod.price} readonly="">
+						</ul>
+						<div class="card-footer text-muted">
+								${prod.regDate}
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
+</c:if>
+</form>
 </body>
 </html>

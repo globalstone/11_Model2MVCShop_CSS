@@ -6,6 +6,8 @@
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/sketchy/bootstrap.min.css" rel="stylesheet">
 
@@ -19,7 +21,7 @@
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	<div class="navbar-collapse collapse show" id="navbarColor01" style="">
-		<ul class="navbar-nav me-auto">
+		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle show" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
 					Membership management</a>
@@ -53,8 +55,8 @@
 					<a class="dropdown-item" href="#">etc...</a>
 				</div>
 			</li>
-			<form class="d-flex ml-auto" style="justify-content: flex-end !important;">
-				<button class="btn btn-secondary me-sm-2" type="submit" id="Logout">Log out</button>
+			<form class="d-flex ml-auto me-auto" style="justify-content: flex-end">
+				<button class="btn btn-secondary me-2" type="submit" id="Logout">Log out</button>
 			</form>
 		</ul>
 	</div>
@@ -106,7 +108,7 @@
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$("a:contains('판매상품등록')").on("click" , function() {
 				//$(self.location).attr("href","/user/logout");
-				self.location = "../product/addProductView.jsp"
+				self.location = "/product/addProductView.jsp"
 			});
 		});
 

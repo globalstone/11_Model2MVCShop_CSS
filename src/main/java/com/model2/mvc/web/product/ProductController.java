@@ -102,7 +102,6 @@ public class ProductController {
 			history = cookiehistory;
 		}
 		Cookie cookie = new Cookie("history", history);
-		cookie.setMaxAge(60 * 60 * 24 * 7); // 쿠키 유효기간을 7일로 설정
 		cookie.setPath("/"); // 쿠키의 유효 경로를 전체로 설정
 		response.addCookie(cookie);
 
@@ -146,7 +145,7 @@ public class ProductController {
 							  Model model) throws Exception{
 		
 		System.out.println("/listProduct.POST / GET");
-		
+
 		if(search.getCurrentPage() == 0) {
 			search.setCurrentPage(1);
 		}

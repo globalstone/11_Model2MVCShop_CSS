@@ -52,5 +52,5 @@ public class ProductDaoImpl implements ProductDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("ProductMapper.getTotalCount",search);
 	}
-	
+
 }

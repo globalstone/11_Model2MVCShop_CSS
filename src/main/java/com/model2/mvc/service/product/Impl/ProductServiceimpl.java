@@ -47,5 +47,5 @@ public class ProductServiceimpl implements ProductService{
 	public void updateProduct(Product product) throws Exception{
 		productDao.updateProduct(product);
 	}
-	
+	//===================
 }
