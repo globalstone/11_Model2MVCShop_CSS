@@ -113,7 +113,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="price" class="col-sm-offset-1 col-sm-3 control-label">주소</label>
+				<label for="price" class="col-sm-offset-1 col-sm-3 control-label">가격</label>
 				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
 					<input type="text" class="form-control" id="price" name="addr" placeholder="가격">
 				</div>
