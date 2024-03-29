@@ -14,6 +14,13 @@
 <!-- Bootstrap 5 JS bundle (includes Popper.js) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+<%--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
+<%--<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>--%>
+<%--<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>--%>
+<%--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css" integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" crossorigin="anonymous">--%>
+<%--<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">--%>
+
+
 <nav class="navbar navbar-expand-lg bg-primary navbar-inverse fixed-top" data-bs-theme="dark">
 	<div class = "container-fluid">
 	<a class="navbar-brand" href="#" style="color: whitesmoke" id="brandLink">Model2 MVC Shop</a>
@@ -55,10 +62,11 @@
 					<a class="dropdown-item" href="#">etc...</a>
 				</div>
 			</li>
-			<form class="d-flex ml-auto me-auto" style="justify-content: flex-end">
-				<button class="btn btn-secondary me-2" type="submit" id="Logout">Log out</button>
-			</form>
+
 		</ul>
+		<form class="d-flex justify-content-end">
+			<button class="btn btn-secondary me-2" type="submit" id="Logout">Log out</button>
+		</form>
 	</div>
 	</div>
 </nav>

@@ -62,7 +62,7 @@
 			var isEndOfData = false;
 			var currentPage = 2;  // 현재 페이지를 2로 설정
 			var pageSize = 8;
-			var dallor = 36;
+			let dallor = 36;
 
 			function loadMoreProducts() {
 				if (!isLoading && !isEndOfData) {
@@ -95,7 +95,7 @@
 										'<div class = "card-body">' +
 										'<h5 class ="card-title">' + product.prodName + '</h5>' +
 										'</div>' +
-										'<img src = "/images/uploadFiles/' + product.fileName + '" alt = "Product Image" width="100%" height="200">' +
+										'<img src = "/images/uploadFiles/' + product.fileName + '" alt = "Product Image" width="70%" height="200">' +
 										'<div class = "card-body">' +
 										'<p class = "card-text">' + product.prodDetail + '</p>' +
 										'</div>' +
@@ -191,7 +191,6 @@
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
-
 <jsp:include page="/layout/toolbar.jsp" />
 <form name = "searchList">
  <c:if test = "${menu == 'search'}">
