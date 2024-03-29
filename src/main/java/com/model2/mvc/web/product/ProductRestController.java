@@ -133,4 +133,13 @@ public class ProductRestController {
 
 		return prod;
 	}
+
+	@GetMapping("/json/listProduct/all")
+	@ResponseBody
+	public List<String> listProductAll() throws Exception {
+		List<String> allProductNames = productService.getAllProductNames();
+
+		return allProductNames;
+	}
+
 }

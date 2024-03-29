@@ -160,19 +160,21 @@
 
 				// 서버에서 전체 상품 데이터를 가져옵니다.
 				$.ajax({
-					url: "/product/json/listProduct/search",
+					url: "/product/json/listProduct/all",
 					method: "GET",
 					dataType: "json",
 					success: function (data) {
-						allProducts = data.productList.map(function (product) {
-							return product.prodName;
-						});
+						if (Array.isArray(data)) {
+							allProducts = data;
 
-						// 자동완성 기능을 적용합니다.
-						$("#productInput").autocomplete({
-							source: allProducts,
-							minLength: 1  // 최소 2글자부터 자동완성을 활성화합니다.
-						});
+							// 자동완성 기능을 적용합니다.
+							$("#productInput").autocomplete({
+								source: allProducts,
+								minLength: 1
+							});
+						} else {
+							console.error("Invalid data format:", data);
+						}
 					},
 					error: function () {
 						console.error("상품 목록을 불러오는데 실패했습니다.");

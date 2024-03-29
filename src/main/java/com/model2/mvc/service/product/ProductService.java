@@ -16,4 +16,6 @@ public interface ProductService {
 	
 	public void updateProduct(Product product) throws Exception;
 
+	public List<String> getAllProductNames() throws Exception;
+
 }

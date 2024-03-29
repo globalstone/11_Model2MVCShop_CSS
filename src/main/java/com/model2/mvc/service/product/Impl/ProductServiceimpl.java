@@ -48,4 +48,9 @@ public class ProductServiceimpl implements ProductService{
 		productDao.updateProduct(product);
 	}
 	//===================
+
+	@Override
+	public List<String> getAllProductNames() throws Exception {
+		return productDao.getAllProductNames();
+	}
 }
