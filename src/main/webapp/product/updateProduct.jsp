@@ -46,7 +46,7 @@ function fncAddProduct(){
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
-
+<jsp:include page="/layout/toolbar.jsp" />
 <form name="detailForm" method="post" enctype="multipart/form-data">
 
 <input type="hidden" name="prodNo" value="${ UpdateProdVO.prodNo }"/>

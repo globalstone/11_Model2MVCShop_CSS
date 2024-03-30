@@ -145,14 +145,14 @@
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">주소</label>
+		    <label for="addr" class="col-sm-offset-1 col-sm-3 control-label">주소</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" id="addr" name="addr"  value="${user.addr}" placeholder="변경주소">
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">휴대전화번호</label>
+		    <label for="phone1" class="col-sm-offset-1 col-sm-3 control-label">휴대전화번호</label>
 		     <div class="col-sm-2">
 		      <select class="form-control" name="phone1" id="phone1">
 				  	<option value="010" ${ ! empty user.phone1 && user.phone1 == "010" ? "selected" : ""  } >010</option>
@@ -172,7 +172,7 @@
 		  </div>
 		  
 		   <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">이메일</label>
+		    <label for="email" class="col-sm-offset-1 col-sm-3 control-label">이메일</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" id="email" name="email" value="${user.email}" placeholder="변경이메일">
 		    </div>

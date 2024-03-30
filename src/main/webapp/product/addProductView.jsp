@@ -4,15 +4,39 @@
 <head>
 	<title>상품등록</title>
 
+	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css" integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" crossorigin="anonymous">
+
+	<!-- jQuery UI CSS -->
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
 
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+
+	<!-- Font Awesome CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- Bootswatch Sketchy CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css" integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" crossorigin="anonymous">
+
+	<!-- Bootstrap Datepicker CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+
+	<!-- Twitter Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+	<!-- Bootstrap Datepicker JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+
+	<!-- Twitter Bootstrap JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
 
 	<script type="text/javascript">
-
 		function fncAddProduct(){
 			//Form 유효성 검증
 			var name = document.detailForm.prodName.value;
@@ -59,6 +83,16 @@
 					}
 				}
 			});
+			$(document).ready(function(){
+				$('#manuDate').datepicker({
+					format: 'yyyy-mm-dd',
+					autoclose: true,
+					calendarWeeks : true,
+					clearBtn: true,
+					disableTouchKeyboard: true
+				});
+
+			});
 		} );
 	</script>
 	<style>
@@ -95,27 +129,27 @@
 			<div class="form-group text-center">
 				<label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">상품명</label>
 				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
-					<input type="text" id = "prodName" class="form-control" placeholder="상품명">
+					<input type="text" id = "prodName" name = "prodName" class="form-control" placeholder="상품명">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="prodDetail" class="col-sm-offset-1 col-sm-3 control-label">상품 상세정보</label>
 				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
-					<input type="text" class="form-control" id="prodDetail" name="password" placeholder="상품 상세정보">
+					<input type="text" class="form-control" id="prodDetail" name="prodDetail" placeholder="상품 상세정보">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="manuDate" class="col-sm-offset-1 col-sm-3 control-label">제조일자</label>
 				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
-					<input type="text" class="form-control" id="manuDate" name="userName"placeholder="제조일자 수정해야됨">
+					<input type="text" class="form-control input-daterange" id="manuDate" name="manuDate" placeholder="제조 일자"  readonly>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="price" class="col-sm-offset-1 col-sm-3 control-label">가격</label>
 				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
-					<input type="text" class="form-control" id="price" name="addr" placeholder="가격">
+					<input type="text" class="form-control" id="price" name="price" placeholder="가격">
 				</div>
 			</div>
 
@@ -126,7 +160,6 @@
 						<input type = "file" name = "uploadFile" class ="form-control" style = "width:300px; height: 30px" maxlength="13"/>
 					</select>
 			</div>
-
 			<div class="form-group">
 				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
 					<button type="button" class="btn btn-primary"  >수 &nbsp;정</button>

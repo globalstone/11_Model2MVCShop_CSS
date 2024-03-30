@@ -244,6 +244,20 @@
 <form name = "manageList">
 <c:if test = "${menu == 'manage'}">
 	<div class="container">
+		<div class="row1">
+			<div class="col-md-12">
+				<div class="input-group mb-3">
+					<select name="searchCondition"
+							class="ct_input_g" style="width: 80px">
+						<option value="1" ${ ! empty search.searchCondition && search.searchCondition==1 ? "selected" : "" } >상품명</option>
+						<input type="text" id = "productInput" name="searchKeyword" value="${ search.searchKeyword }" class="form-control" placeholder="상품명을 입력해주세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+						<button class="btn btn-primary" type="button" id="button-addon2">Search</button>
+						<input type= "hidden" id = "currentPage" name="currentPage" value = ""/>
+					</select>
+				</div>
+			</div>
+		</div>
+	<div class="container">
 		<div class="row">
 			<c:set var="i" value="0"/>
 			<c:forEach var="prod" items="${list}">

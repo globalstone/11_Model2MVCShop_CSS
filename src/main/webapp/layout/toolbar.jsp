@@ -65,6 +65,7 @@
 
 		</ul>
 		<form class="d-flex justify-content-end">
+			<h4>${user.userName}님 환영합니다.</h4>
 			<button class="btn btn-secondary me-2" type="submit" id="Logout">Log out</button>
 		</form>
 	</div>
@@ -155,7 +156,9 @@
 </script>
 <style>
 
-
+	h4 {
+		color: whitesmoke;
+	}
 	.navbar-nav .nav-link {
 		font-size: 16px;
 	}
