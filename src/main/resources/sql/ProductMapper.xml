@@ -79,11 +79,13 @@
         FROM (
         <include refid="select-list"/>
         ) countTable
+
     </select>
 
 <select id="getAllProductNames" resultType="string">
     SELECT prod_name
     FROM product
+    ORDER BY prod_no DESC;
 </select>
 
 </mapper>

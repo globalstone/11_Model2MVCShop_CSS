@@ -50,6 +50,16 @@
 		}
 	}
 
+	function loadImage(src, callback) {
+		var img = new Image();
+		img.onload = function() {
+			img.style.width = '100%';
+			img.style.height = '200px';
+			callback(img);
+		};
+		img.src = src;
+	}
+
 	$(function () {
 		$("#button-addon2").on("click", function () {
 			//Debug..
@@ -68,15 +78,66 @@
 			var pageSize = 8;
 			let dallor = 36;
 
-			function loadImage(src, callback) {
-				var img = new Image();
-				img.onload = function() {
-					img.style.width = '100%';
-					img.style.height = '200px';
-					callback(img);
-				};
-				img.src = src;
-			}
+			function loadProduct(i, product) {
+				var time = product.regDate;
+				var productDate = new Date(time);
+				var todays = new Date();
+				var times = Math.abs(todays.getTime() - productDate.getTime());
+				var days = Math.ceil(times / (1000 * 3600 * 24) - 1);
+
+				if (days === 0) {
+					days = "today";
+				} else {
+					days += 'days ago';
+				}
+
+				loadImage('/images/uploadFiles/' + product.fileName, function (img) {
+				var row = '<div class = "col-md-4">' +
+						'<div class = "card mb-3">' +
+						'<h3 class = "card-header">' + (((currentPage - 1) * pageSize + i + 1) - 8) +
+						'<c:if test = "${menu == 'search'}">' +
+						'<c:if test="${ !empty prod.proTranCode }">' +
+						'<c:if test="${ fn:trim(prod.proTranCode)==3 }">' +
+						'<div style = "float: right;">sold out</div>' +
+						'</c:if>' +
+						'<c:if test="${ fn:trim(prod.proTranCode) !=3 }">' +
+						'<div style = "float: right;">sold out</div>' +
+						'</c:if>' +
+						'</c:if>' +
+						'<c:if test="${ empty prod.proTranCode }">' +
+						'<div style = "float: right;">On Sale</div>' +
+						'</c:if></c:if>' +
+						'<c:if test = "${menu == 'manage'}">' +
+						'<a href="/product/updateProduct/${ prod.prodNo }/${ menu }" style="float: right;" id = "Edit">Edit</a>' +
+						'</c:if>' +
+						'</h3>' +
+						'<div class = "card-body">' +
+						'<h5 class ="card-title">' + product.prodName + '</h5>' +
+						'</div>' +
+						img.outerHTML +
+						'<div class = "card-body">' +
+						'<p class = "card-text">' + product.prodDetail + '</p>' +
+						'</div>' +
+						'<ul class = "input-group-text">' +
+						'<span class ="input-group-text">' + String.fromCharCode(dallor) + '</span>' +
+						'<input class = "form-control" id = "readOnlyInput" type="text" placeholder="' + product.price + '" readonly="">' +
+						'</ul>' +
+						'<div class = "card-body">' +
+						'<c:if test = "${menu == 'search'}">' +
+						'<c:if test="${ empty prod.proTranCode }">' +
+						'<a href = "/purchase/addPurchase/' + product.prodNo + '" class = "card-link"> Buy </a>' +
+						'</c:if>' +
+						'<a href = "#" class = "card-link"> Wish </a>' +
+						'</c:if>' +
+						'</div>' +
+						'<div class = "card-footer text-muted">' +
+						days +
+						'</div>' +
+						'</div>' +
+						'</div>';
+				$('.row').append(row);
+			});
+		}
 
 			function loadMoreProducts() {
 				if (!isLoading && !isEndOfData) {
@@ -97,38 +158,7 @@
 								return;
 							}
 							for (var i = 0; i < prod.length; i++) {
-								var product = prod[i];
-								var time = product.regDate;
-								var productDate = new Date(time);
-								var today = new Date();
-								var times = Math.abs(today.getTime() - productDate.getTime());
-								var days = Math.ceil(times / (1000 * 3600 * 24) - 1);
-								loadImage('/images/uploadFiles/' + product.fileName, function (img) {
-									var row = '<div class = "col-md-4">' +
-											'<div class = "card mb-3">' +
-											'<h3 class = "card-header">' + ((currentPage - 1) * pageSize + i + 1) + '</h3>' +
-											'<div class = "card-body">' +
-											'<h5 class ="card-title">' + product.prodName + '</h5>' +
-											'</div>' +
-											img.outerHTML +
-											'<div class = "card-body">' +
-											'<p class = "card-text">' + product.prodDetail + '</p>' +
-											'</div>' +
-											'<ul class = "input-group-text">' +
-											'<span class ="input-group-text">' + String.fromCharCode(dallor) + '</span>' +
-											'<input class = "form-control" id = "readOnlyInput" type="text" placeholder="' + product.price + '" readonly="">' +
-											'</ul>' +
-											'<div class = "card-body">' +
-											'<a href = "/purchase/addPurchase/' + product.prodNo + '" class = "card-link"> Buy </a>' +
-											'<a href = "#" class = "card-link"> Wish </a>' +
-											'</div>' +
-											'<div class = "card-footer text-muted">' +
-											days + 'days ago' +
-											'</div>' +
-											'</div>' +
-											'</div>';
-									$('.row').append(row);
-								});
+								loadProduct(i, prod[i]);  // 각 상품을 로드하는 함수를 호출합니다.
 							}
 							isLoading = false;
 							currentPage++;
@@ -139,7 +169,6 @@
 					});
 				}
 			}
-
 			// loadMoreProducts();  // 초기에 한 번 데이터 로드
 			var $window = $(window);
 			var $document = $(document);
@@ -159,6 +188,7 @@
 					loadMoreProducts();
 				}
 			});
+		});
 
 
 			$(document).ready(function () {
@@ -197,7 +227,6 @@
 					}
 				});
 			});
-		});
 </script>
 <style>
 	body {
@@ -230,7 +259,18 @@
 				<c:set var='i' value="${i+1}"/>
 				<div class="col-md-4">
 					<div class="card mb-3">
-						<h3 class="card-header">${i}</h3>
+						<h3 class="card-header">${i}
+							<c:if test="${ !empty prod.proTranCode }">
+								<c:if test="${ fn:trim(prod.proTranCode)==3 }">
+									<div style = "float: right;">sold out</div>
+								</c:if>
+								<c:if test="${ fn:trim(prod.proTranCode) !=3 }">
+									<div style = "float: right;">sold out</div>
+								</c:if>
+							</c:if>
+							<c:if test="${ empty prod.proTranCode }">
+								<div style = "float: right;">On Sale</div>
+							</c:if></h3>
 						<div class="card-body">
 							<h5 class="card-title">${prod.prodName}</h5>
 						</div>
@@ -243,7 +283,9 @@
 							<input class="form-control" id="readOnlyInput" type="text" placeholder=${prod.price} readonly="">
 						</ul>
 						<div class="card-body">
-							<a href="/product/buy/${prod.prodNo}" class="card-link">Buy</a>
+							<c:if test="${ empty prod.proTranCode }">
+							<a href="/purchase/addPurchase/${ prod.prodNo }">Buy</a>
+							</c:if>
 							<a href="/product/wishlist/${prod.prodNo}" class="card-link">Whish</a>
 						</div>
 						<div class="card-footer text-muted">
@@ -295,6 +337,12 @@
 							<span class="input-group-text">$</span>
 							<input class="form-control" id="readOnlyInput" type="text" placeholder=${prod.price} readonly="">
 						</ul>
+						<div class="card-body">
+							<c:if test = "${menu == 'search'}">
+							<a href="/product/buy/${prod.prodNo}" class="card-link">Buy</a>
+							<a href="/product/wishlist/${prod.prodNo}" class="card-link">Whish</a>
+							</c:if>
+						</div>
 						<div class="card-footer text-muted">
 								${prod.regDate}
 						</div>

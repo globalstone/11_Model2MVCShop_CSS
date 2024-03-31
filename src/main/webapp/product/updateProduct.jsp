@@ -7,9 +7,6 @@
 <head>
 <title>상품정보수정</title>
 
-<link rel="stylesheet" href="/css/admin.css" type="text/css">
-
-<script type="text/javascript" src="../javascript/calendar.js">
 </script>
 
 <script type="text/javascript">
@@ -43,141 +40,231 @@ function fncAddProduct(){
 }
 -->
 </script>
+	<style>
+
+		.fa-calendar {
+			position: absolute;
+			top: 13px;
+			font-size: 20px;
+			color: #1976D2;
+			z-index: 1000;
+		}
+
+		#fa-1 {
+			left: calc(50% - 40px);
+		}
+
+		button:focus {
+			-moz-box-shadow: none !important;
+			-webkit-box-shadow: none !important;
+			box-shadow: none !important;
+			outline-width: 0;
+		}
+
+		.datepicker {
+			background-color: #fff;
+			border-radius: 0 !important;
+			align-content: center !important;
+			padding: 0 !important;
+		}
+
+		.datepicker-dropdown {
+			top: 180px !important;
+			left: calc(50% - 173.5px) !important;
+			border-right: #1976D2;
+			border-left: #1976D2;
+		}
+
+		.datepicker-dropdown.datepicker-orient-left:before {
+			left: calc(50% - 6px) !important;
+		}
+
+		.datepicker-dropdown.datepicker-orient-left:after {
+			left: calc(50% - 5px) !important;
+			border-bottom-color: #1976D2;
+		}
+
+		.datepicker-dropdown.datepicker-orient-right:after {
+			border-bottom-color: #1976D2;
+		}
+
+		.datepicker table tr td.today, span.focused {
+			border-radius: 50% !important;
+			background-image: linear-gradient(#FFF3E0, #FFE0B2);
+		}
+
+		thead tr:nth-child(2) {
+			background-color: #1976D2 !important;
+		}
+
+		/*Weekday title*/
+		thead tr:nth-child(3) th {
+			font-weight: bold !important;
+			padding: 20px 10px !important;
+			color: #BDBDBD !important;
+		}
+
+		tbody tr td {
+			padding: 10px !important;
+		}
+
+		tfoot tr:nth-child(2) th {
+			padding: 10px !important;
+			border-top: 1px solid #CFD8DC !important;
+		}
+
+		.cw {
+			font-size: 14px !important;
+			background-color: #E8EAF6 !important;
+			border-radius: 0px !important;
+			padding: 0px 20px !important;
+			margin-right: 10px solid #fff !important;
+		}
+
+		.old, .day, .new {
+			width: 40px !important;
+			height: 40px !important;
+			border-radius: 0px !important;
+		}
+
+		.day.old, .day.new {
+			color: #E0E0E0 !important;
+		}
+
+		.day.old:hover, .day.new:hover {
+			border-radius: 50% !important;
+		}
+
+		.old-day:hover, .day:hover, .new-day:hover, .month:hover, .year:hover, .decade:hover, .century:hover {
+			border-radius: 50% !important;
+			background-color: #eee;
+		}
+
+		.active {
+			border-radius: 50% !important;
+			background-image: linear-gradient(#1976D2, #1976D2) !important;
+			color: #fff !important;
+		}
+
+		.range-start, .range-end {
+			border-radius: 50% !important;
+			background-image: linear-gradient(#1976D2, #1976D2) !important;
+		}
+
+		.range {
+			background-color: #E3F2FD !important;
+		}
+
+		.prev, .next, .datepicker-switch {
+			border-radius: 0 !important;
+			padding: 10px 10px 10px 10px !important;
+			font-size: 18px;
+			opacity: 0.7;
+			color: #fff;
+		}
+
+		.prev:hover, .next:hover, .datepicker-switch:hover {
+			background-color: inherit !important;
+			opacity: 1;
+		}
+
+		@media screen and (max-width: 726px) {
+			.datepicker-dropdown.datepicker-orient-right:before {
+				right: calc(50% - 6px);
+			}
+
+			.datepicker-dropdown.datepicker-orient-right:after {
+				right: calc(50% - 5px);
+			}
+		}
+		body {
+			padding-top: 90px;
+		}
+
+		#center-test{
+			text-align: center;
+		}
+		.form-group{
+			text-align: center;
+		}
+		button{
+			text-align: center;
+		}
+	</style>
+	</script>
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
 <jsp:include page="/layout/toolbar.jsp" />
 <form name="detailForm" method="post" enctype="multipart/form-data">
+	<div class="container" id = "center-test">
 
-<input type="hidden" name="prodNo" value="${ UpdateProdVO.prodNo }"/>
+		<div class="page-header text-center">
+			<h3 class=" text-info">상품정보 수정</h3>
+			<h5 class="text-muted">상품 정보를 <strong class="text-danger">최신정보로 수정</strong>해 주세요.</h5>
+		</div>
 
-<table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td width="15" height="37">
-			<img src="/images/ct_ttl_img01.gif" width="15" height="37"/>
-		</td>
-		<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td width="93%" class="ct_ttl01">상품수정</td>
-					<td width="20%" align="right">&nbsp;</td>
-				</tr>
-			</table>
-		</td>
-		<td width="12" height="37">
-			<img src="/images/ct_ttl_img03.gif" width="12" height="37"/>
-		</td>
-	</tr>
-</table>
+		<!-- form Start /////////////////////////////////////-->
+		<form class="form-horizontal">
+			<input type="hidden" name="prodNo" value="${ UpdateProdVO.prodNo }"/>
+			<div class="form-group text-center">
+				<label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">상품명</label>
+				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
+					<input type="text" id = "prodName" name = "prodName" class="form-control" placeholder="${ UpdateProdVO.prodName }">
+				</div>
+			</div>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 13px;">
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">
-			상품명 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
-		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td width="105">
-						<input 	type="text" name="prodName" class="ct_input_g" 
-										style="width: 100px; height: 19px" maxLength="20" value="${ UpdateProdVO.prodName }">
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">
-			상품상세정보 <img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
-		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">
-			<input type="text" name="prodDetail" value="${ UpdateProdVO.prodDetail }" class="ct_input_g" 
-						style="width: 100px; height: 19px" maxLength="10"	minLength="6">
-		</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">
-			제조일자 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
-		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">
-			<input type="text" readonly="readonly" name="manuDate" value="${ UpdateProdVO.manuDate }" 	
-						class="ct_input_g" style="width: 100px; height: 19px" maxLength="10" minLength="6">&nbsp;
-						<img 	src="../images/ct_icon_date.gif" width="15" height="15" 
-									onclick="show_calendar('document.detailForm.manuDate', document.detailForm.manuDate.value)" />
-		</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">
-			가격 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
-		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">
-			<input type="text" name="price" value="${ UpdateProdVO.price }"
-						class="ct_input_g" style="width: 100px; height: 19px" maxLength="50"/>&nbsp;원
-		</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">상품이미지</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">
-			<input	type="file" name="uploadFile" class="ct_input_g"
-						style="width: 200px; height: 19px" maxLength="13" value="${pageContext.request.contextPath}/images/uploadFiles/${UpdateProdVO.fileName }"/>
-		</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-</table>
+			<div class="form-group">
+				<label for="prodDetail" class="col-sm-offset-1 col-sm-3 control-label">상품 상세정보</label>
+				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
+					<input type="text" class="form-control" id="prodDetail" name="prodDetail" placeholder="${UpdateProdVO.prodDetail}">
+				</div>
+			</div>
+			<%--			<div class="form-group">--%>
+			<%--				<label for="manuDate" class="col-sm-offset-1 col-sm-3 control-label">제조일자</label>--%>
+			<%--				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">--%>
+			<%--					<input type="text" class="form-control input-daterange" id="manuDate" name="manuDate" placeholder="제조 일자"  readonly>--%>
+			<%--				</div>--%>
+			<%--			</div>--%>
+			<div class="container px-1 px-sm-5 mx-auto">
+				<form autocomplete="off">
+					<div class="flex-row d-flex justify-content-center">
+						<div class="col-lg-6 col-11 px-1">
+							<div class="form-group input-daterange">
+								<label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">제조일자</label>
+								<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
+									<input type="text" id="start" name = "manuDate" class="form-control" placeholder="${ UpdateProdVO.manuDate }" readonly>
+								</div>
+								<span class="fa fa-calendar" id="fa-1"></span>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="form-group">
+				<label for="price" class="col-sm-offset-1 col-sm-3 control-label">가격</label>
+				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
+					<input type="text" class="form-control" id="price" name="price" placeholder="${UpdateProdVO.price}">
+				</div>
+			</div>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top: 10px;">
-	<tr>
-		<td width="53%"></td>
-		<td align="right">
-			<table border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td width="17" height="23">
-						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
-					</td>
-					<td background="/images/ct_btnbg02.gif" class="ct_btn01"	style="padding-top: 3px;">
-						<a href="javascript:fncAddProduct();">수정</a>
-					</td>
-					<td width="14" height="23">
-						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
-					</td>
-					<td width="30"></td>
-					<td width="17" height="23">
-						<img src="/images/ct_btnbg01.gif"width="17" height="23"/>
-					</td>
-					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-						<a href="javascript:history.go(-1)">취소</a>
-					</td>
-					<td width="14" height="23">
-						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
+			<div class="form-group">
+				상품 이미지
+				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
+					<input type = "file" name = "uploadFile" id = "uploadFile" class ="form-control" style = "width:300px; height: 30px" maxlength="13"/>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
+						<a href="javascript:fncAddProduct();" class="btn btn-primary" id = "add">수 &nbsp;정</a>
+						<a href="javascript:resetData();" class = "btn btn-primary">취 &nbsp;소</a>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- form Start /////////////////////////////////////-->
+
 </form>
-
 </body>
 </html>
+<!--  화면구성 div Start /////////////////////////////////////-->

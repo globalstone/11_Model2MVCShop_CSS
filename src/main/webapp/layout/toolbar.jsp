@@ -79,7 +79,7 @@
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="javascript:void(0);">상품검색</a>
 					<a class="dropdown-item" href="javascript:void(0);">구매이력조회</a>
-					<a class="dropdown-item" href="javascript:void(0);">최근본상품</a>
+					<a class="dropdown-item" href="javascript:void(0);">찜 목록</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">etc...</a>
 				</div>
