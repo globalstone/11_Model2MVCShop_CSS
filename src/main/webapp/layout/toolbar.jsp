@@ -5,14 +5,36 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+<%--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
+<%--<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>--%>
+<%--<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">--%>
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/sketchy/bootstrap.min.css" rel="stylesheet">
+<%--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>--%>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<%--<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.5.2/sketchy/bootstrap.min.css" rel="stylesheet">--%>
+
+<!-- Bootstrap 4 CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap 4 CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sketchy/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap 4 JS bundle (includes Popper.js) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- Datepicker CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+<!-- Datepicker JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+<!-- Datepicker Locale -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js"></script>
+
 
 <!-- Bootstrap 5 JS bundle (includes Popper.js) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<%--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>--%>
 
 <%--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
 <%--<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>--%>
@@ -62,9 +84,8 @@
 					<a class="dropdown-item" href="#">etc...</a>
 				</div>
 			</li>
-
 		</ul>
-		<form class="d-flex justify-content-end">
+		<form class="d-flex ml-auto">
 			<h4>${user.userName}님 환영합니다.</h4>
 			<button class="btn btn-secondary me-2" type="submit" id="Logout">Log out</button>
 		</form>
@@ -156,6 +177,9 @@
 </script>
 <style>
 
+	.nav-link {
+		color: whitesmoke;
+	}
 	h4 {
 		color: whitesmoke;
 	}

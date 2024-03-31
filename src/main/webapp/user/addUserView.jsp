@@ -10,17 +10,26 @@
 	<!-- 참조 : http://getbootstrap.com/css/   참조 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<!-- Bootstrap 5 CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<%--<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.5.2/sketchy/bootstrap.min.css" rel="stylesheet">--%>
 
-	<!-- Bootswatch Sketchy Theme -->
-	<link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/sketchy/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap 4 CSS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap 4 CSS -->
+	<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sketchy/bootstrap.min.css" rel="stylesheet">
 
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- Bootstrap 4 JS bundle (includes Popper.js) -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!-- Datepicker CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
 
-	<!-- Bootstrap 5 JS bundle (includes Popper.js) -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Datepicker JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+	<!-- Datepicker Locale -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js"></script>
 
 	<!-- CSS -->
 	<style>
@@ -213,6 +222,7 @@
 
 		<div class="form-group">
 			<label for="phone1" class="col-sm-offset-1 col-sm-3 control-label">휴대전화번호</label>
+			<div class ="row">
 			<div class="col-sm-2">
 				<select class="form-control" name="phone1" id="phone1">
 					<option value="010" >010</option>
@@ -228,8 +238,10 @@
 			<div class="col-sm-2">
 				<input type="text" class="form-control" id="phone3" name="phone3" placeholder="번호">
 			</div>
+			</div>
 			<input type="hidden" name="phone"  />
 		</div>
+
 
 	<div class="form-group">
 		<label for="email" class="col-sm-offset-1 col-sm-3 control-label">이메일</label>

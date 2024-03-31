@@ -4,38 +4,7 @@
 <head>
 	<title>상품등록</title>
 
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-	<!-- jQuery UI CSS -->
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
-
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-
-	<!-- Font Awesome CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<!-- Bootswatch Sketchy CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css" integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" crossorigin="anonymous">
-
-	<!-- Bootstrap Datepicker CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
-
-	<!-- Twitter Bootstrap CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
-
-	<!-- Bootstrap JS -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-	<!-- Bootstrap Datepicker JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
-
-	<!-- Twitter Bootstrap JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
-
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script type="text/javascript">
 		function fncAddProduct(){
 			//Form 유효성 검증
@@ -83,19 +52,152 @@
 					}
 				}
 			});
-			$(document).ready(function(){
-				$('#manuDate').datepicker({
+				$('.input-daterange').datepicker({
 					format: 'yyyy-mm-dd',
 					autoclose: true,
-					calendarWeeks : true,
+					calendarWeeks: true,
 					clearBtn: true,
 					disableTouchKeyboard: true
 				});
-
 			});
-		} );
 	</script>
 	<style>
+
+		.fa-calendar {
+			position: absolute;
+			top: 13px;
+			font-size: 20px;
+			color: #1976D2;
+			z-index: 1000;
+		}
+
+		#fa-1 {
+			left: calc(50% - 40px);
+		}
+
+		button:focus {
+			-moz-box-shadow: none !important;
+			-webkit-box-shadow: none !important;
+			box-shadow: none !important;
+			outline-width: 0;
+		}
+
+		.datepicker {
+			background-color: #fff;
+			border-radius: 0 !important;
+			align-content: center !important;
+			padding: 0 !important;
+		}
+
+		.datepicker-dropdown {
+			top: 180px !important;
+			left: calc(50% - 173.5px) !important;
+			border-right: #1976D2;
+			border-left: #1976D2;
+		}
+
+		.datepicker-dropdown.datepicker-orient-left:before {
+			left: calc(50% - 6px) !important;
+		}
+
+		.datepicker-dropdown.datepicker-orient-left:after {
+			left: calc(50% - 5px) !important;
+			border-bottom-color: #1976D2;
+		}
+
+		.datepicker-dropdown.datepicker-orient-right:after {
+			border-bottom-color: #1976D2;
+		}
+
+		.datepicker table tr td.today, span.focused {
+			border-radius: 50% !important;
+			background-image: linear-gradient(#FFF3E0, #FFE0B2);
+		}
+
+		thead tr:nth-child(2) {
+			background-color: #1976D2 !important;
+		}
+
+		/*Weekday title*/
+		thead tr:nth-child(3) th {
+			font-weight: bold !important;
+			padding: 20px 10px !important;
+			color: #BDBDBD !important;
+		}
+
+		tbody tr td {
+			padding: 10px !important;
+		}
+
+		tfoot tr:nth-child(2) th {
+			padding: 10px !important;
+			border-top: 1px solid #CFD8DC !important;
+		}
+
+		.cw {
+			font-size: 14px !important;
+			background-color: #E8EAF6 !important;
+			border-radius: 0px !important;
+			padding: 0px 20px !important;
+			margin-right: 10px solid #fff !important;
+		}
+
+		.old, .day, .new {
+			width: 40px !important;
+			height: 40px !important;
+			border-radius: 0px !important;
+		}
+
+		.day.old, .day.new {
+			color: #E0E0E0 !important;
+		}
+
+		.day.old:hover, .day.new:hover {
+			border-radius: 50% !important;
+		}
+
+		.old-day:hover, .day:hover, .new-day:hover, .month:hover, .year:hover, .decade:hover, .century:hover {
+			border-radius: 50% !important;
+			background-color: #eee;
+		}
+
+		.active {
+			border-radius: 50% !important;
+			background-image: linear-gradient(#1976D2, #1976D2) !important;
+			color: #fff !important;
+		}
+
+		.range-start, .range-end {
+			border-radius: 50% !important;
+			background-image: linear-gradient(#1976D2, #1976D2) !important;
+		}
+
+		.range {
+			background-color: #E3F2FD !important;
+		}
+
+		.prev, .next, .datepicker-switch {
+			border-radius: 0 !important;
+			padding: 10px 10px 10px 10px !important;
+			font-size: 18px;
+			opacity: 0.7;
+			color: #fff;
+		}
+
+		.prev:hover, .next:hover, .datepicker-switch:hover {
+			background-color: inherit !important;
+			opacity: 1;
+		}
+
+		@media screen and (max-width: 726px) {
+			.datepicker-dropdown.datepicker-orient-right:before {
+				right: calc(50% - 6px);
+			}
+
+			.datepicker-dropdown.datepicker-orient-right:after {
+				right: calc(50% - 5px);
+			}
+		}
 		body {
 			padding-top: 90px;
 		}
@@ -119,8 +221,8 @@
 	<div class="container" id = "center-test">
 
 		<div class="page-header text-center">
-			<h3 class=" text-info">상품정보수정</h3>
-			<h5 class="text-muted">상품 정보를 <strong class="text-danger">최신정보로 관리</strong>해 주세요.</h5>
+			<h3 class=" text-info">상품정보 등록</h3>
+			<h5 class="text-muted">상품 정보를 <strong class="text-danger">최신정보로 입력</strong>해 주세요.</h5>
 		</div>
 
 		<!-- form Start /////////////////////////////////////-->
@@ -139,13 +241,27 @@
 					<input type="text" class="form-control" id="prodDetail" name="prodDetail" placeholder="상품 상세정보">
 				</div>
 			</div>
-			<div class="form-group">
-				<label for="manuDate" class="col-sm-offset-1 col-sm-3 control-label">제조일자</label>
-				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
-					<input type="text" class="form-control input-daterange" id="manuDate" name="manuDate" placeholder="제조 일자"  readonly>
-				</div>
+<%--			<div class="form-group">--%>
+<%--				<label for="manuDate" class="col-sm-offset-1 col-sm-3 control-label">제조일자</label>--%>
+<%--				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">--%>
+<%--					<input type="text" class="form-control input-daterange" id="manuDate" name="manuDate" placeholder="제조 일자"  readonly>--%>
+<%--				</div>--%>
+<%--			</div>--%>
+			<div class="container px-1 px-sm-5 mx-auto">
+				<form autocomplete="off">
+					<div class="flex-row d-flex justify-content-center">
+						<div class="col-lg-6 col-11 px-1">
+							<div class="form-group input-daterange">
+								<label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">제조일자</label>
+								<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
+								<input type="text" id="start" name = "manuDate" class="form-control" readonly>
+								</div>
+								<span class="fa fa-calendar" id="fa-1"></span>
+							</div>
+						</div>
+					</div>
+				</form>
 			</div>
-
 			<div class="form-group">
 				<label for="price" class="col-sm-offset-1 col-sm-3 control-label">가격</label>
 				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
@@ -154,16 +270,14 @@
 			</div>
 
 			<div class="form-group">
-				<label for="fileName" class="col-sm-offset-1 col-sm-3 control-label">상품 이미지</label>
+				상품 이미지
 				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
-					<select class="form-control" name="phone1" id="fileName">
-						<input type = "file" name = "uploadFile" class ="form-control" style = "width:300px; height: 30px" maxlength="13"/>
-					</select>
+						<input type = "file" name = "uploadFile" id = "uploadFile" class ="form-control" style = "width:300px; height: 30px" maxlength="13"/>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-4" style="display: block; margin-left: auto; margin-right: auto;">
-					<button type="button" class="btn btn-primary"  >수 &nbsp;정</button>
-					<button type="button" class = "btn btn-primary">취 &nbsp;소</button>
+					<a href="javascript:fncAddProduct();" class="btn btn-primary" id = "add">등 &nbsp;록</a>
+					<a href="javascript:resetData();" class = "btn btn-primary">취 &nbsp;소</a>
 				</div>
 			</div>
 			</div>

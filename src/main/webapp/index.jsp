@@ -32,23 +32,36 @@
 <%--	<!-- jQuery -->--%>
 <%--	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
 	<!-- Bootstrap Datepicker CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+<%--	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">--%>
 
-	<!-- Twitter Bootstrap CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
+<%--	<!-- Twitter Bootstrap CSS -->--%>
+<%--	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">--%>
+<%--	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">--%>
 
+<%--	<!-- jQuery -->--%>
+<%--	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
+
+<%--	<!-- Bootstrap Datepicker JS -->--%>
+<%--	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>--%>
+
+<%--	<!-- Twitter Bootstrap JS -->--%>
+<%--	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>--%>
+
+<%--	<!-- Bootswatch Sketchy CSS -->--%>
+<%--	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css" integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" crossorigin="anonymous">--%>
 	<!-- jQuery -->
+<%--	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>--%>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<%--<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.5.2/sketchy/bootstrap.min.css" rel="stylesheet">--%>
 
-	<!-- Bootstrap Datepicker JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+	<!-- Bootstrap 4 CSS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap 4 CSS -->
+	<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sketchy/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Twitter Bootstrap JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+	<!-- Bootstrap 4 JS bundle (includes Popper.js) -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-	<!-- Bootswatch Sketchy CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css" integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" crossorigin="anonymous">
 
 
 	<!--  ///////////////////////// CSS ////////////////////////// -->

@@ -24,11 +24,15 @@
 <html>
 <head>
 <title>상품 목록조회</title>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css" integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+<%--	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>--%>
+<%--	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
+<%--	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>--%>
+<%--	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>--%>
+<%--	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css" integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" crossorigin="anonymous">--%>
+<%--	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">--%>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<title>Carousel Template for Bootstrap</title>
 </head>
@@ -64,6 +68,16 @@
 			var pageSize = 8;
 			let dallor = 36;
 
+			function loadImage(src, callback) {
+				var img = new Image();
+				img.onload = function() {
+					img.style.width = '100%';
+					img.style.height = '200px';
+					callback(img);
+				};
+				img.src = src;
+			}
+
 			function loadMoreProducts() {
 				if (!isLoading && !isEndOfData) {
 					isLoading = true;
@@ -89,30 +103,32 @@
 								var today = new Date();
 								var times = Math.abs(today.getTime() - productDate.getTime());
 								var days = Math.ceil(times / (1000 * 3600 * 24) - 1);
-								var row = '<div class = "col-md-4">' +
-										'<div class = "card mb-3">' +
-										'<h3 class = "card-header">' + ((currentPage - 1) * pageSize + i + 1) + '</h3>' +
-										'<div class = "card-body">' +
-										'<h5 class ="card-title">' + product.prodName + '</h5>' +
-										'</div>' +
-										'<img src = "/images/uploadFiles/' + product.fileName + '" alt = "Product Image" width="70%" height="200">' +
-										'<div class = "card-body">' +
-										'<p class = "card-text">' + product.prodDetail + '</p>' +
-										'</div>' +
-										'<ul class = "input-group-text">' +
-										'<span class ="input-group-text">' + String.fromCharCode(dallor) + '</span>' +
-										'<input class = "form-control" id = "readOnlyInput" type="text" placeholder="' + product.price + '" readonly="">' +
-										'</ul>' +
-										'<div class = "card-body">' +
-										'<a href = "/purchase/addPurchase/' + product.prodNo + '" class = "card-link"> Buy </a>' +
-										'<a href = "#" class = "card-link"> Wish </a>' +
-										'</div>' +
-										'<div class = "card-footer text-muted">' +
-										days + 'days ago' +
-										'</div>' +
-										'</div>' +
-										'</div>';
-								$('.row').append(row);
+								loadImage('/images/uploadFiles/' + product.fileName, function (img) {
+									var row = '<div class = "col-md-4">' +
+											'<div class = "card mb-3">' +
+											'<h3 class = "card-header">' + ((currentPage - 1) * pageSize + i + 1) + '</h3>' +
+											'<div class = "card-body">' +
+											'<h5 class ="card-title">' + product.prodName + '</h5>' +
+											'</div>' +
+											img.outerHTML +
+											'<div class = "card-body">' +
+											'<p class = "card-text">' + product.prodDetail + '</p>' +
+											'</div>' +
+											'<ul class = "input-group-text">' +
+											'<span class ="input-group-text">' + String.fromCharCode(dallor) + '</span>' +
+											'<input class = "form-control" id = "readOnlyInput" type="text" placeholder="' + product.price + '" readonly="">' +
+											'</ul>' +
+											'<div class = "card-body">' +
+											'<a href = "/purchase/addPurchase/' + product.prodNo + '" class = "card-link"> Buy </a>' +
+											'<a href = "#" class = "card-link"> Wish </a>' +
+											'</div>' +
+											'<div class = "card-footer text-muted">' +
+											days + 'days ago' +
+											'</div>' +
+											'</div>' +
+											'</div>';
+									$('.row').append(row);
+								});
 							}
 							isLoading = false;
 							currentPage++;
