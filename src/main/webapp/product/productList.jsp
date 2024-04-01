@@ -342,6 +342,20 @@
 							<a href="/product/buy/${prod.prodNo}" class="card-link">Buy</a>
 							<a href="/product/wishlist/${prod.prodNo}" class="card-link">Whish</a>
 							</c:if>
+							<c:if test="${ ! empty prod.proTranCode }">
+								<c:if test="${ fn:trim(prod.proTranCode)==1}">
+									구매완료 <a href="/purchase/updateTranCode?prodNo=${ prod.prodNo }&tranCode=2">배송하기</a>
+								</c:if>
+								<c:if test="${ fn:trim(prod.proTranCode)==2}">
+									배송중
+								</c:if>
+								<c:if test="${ fn:trim(prod.proTranCode)==3}">
+									배송완료
+								</c:if>
+							</c:if>
+							<c:if test="${ empty prod.proTranCode }">
+								판매중
+							</c:if>
 						</div>
 						<div class="card-footer text-muted">
 								${prod.regDate}

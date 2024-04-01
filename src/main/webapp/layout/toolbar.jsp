@@ -53,7 +53,7 @@
 		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle show" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
-					Membership management</a>
+					회원관리</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="javascript:void(0);" id="getUserLink">개인정보조회</a>
 					<c:if test="${user.role == 'admin'}">
@@ -65,17 +65,18 @@
 			</li>
 			<c:if test="${user.role == 'admin'}">
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle show" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">product management</a>
+					<a class="nav-link dropdown-toggle show" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">상품관리</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="javascript:void(0);">판매상품등록</a>
 						<a class="dropdown-item" href="javascript:void(0);">판매상품관리</a>
+						<a class="dropdown-item" href="#">배송관리</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#">etc...</a>
 					</div>
 				</li>
 			</c:if>
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle show" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Product purchase</a>
+				<a class="nav-link dropdown-toggle show" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">상품구매</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="javascript:void(0);">상품검색</a>
 					<a class="dropdown-item" href="javascript:void(0);">구매이력조회</a>

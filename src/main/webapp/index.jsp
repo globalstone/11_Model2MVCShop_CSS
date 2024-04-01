@@ -143,7 +143,7 @@
 			});
 
 			// "Login"  Event ¿¬°á
-			$(".form-signin").on("submit", function (event) {
+			$("#signIn").on("click", function (event) {
 				event.preventDefault();
 				processLogin();
 			});
@@ -178,7 +178,7 @@
 				<form class="d-flex ml-auto">
 					<input class="form-control me-sm-2" type="text" placeholder="ID">
 					<input class="form-control me-sm-2" type="password" placeholder="password">
-					<button class="btn btn-secondary my-2 my-sm-0" type="submit"style="width: 200px;">Sign in</button>
+					<button class="btn btn-secondary my-2 my-sm-0" type="submit"style="width: 200px;" id = "signIn">Sign in</button>
 					<button class="btn btn-secondary my-2 my-sm-0" type="submit"style="width: 200px;" id = "signUp">Sign Up</button>
 				</form>
 			</div>

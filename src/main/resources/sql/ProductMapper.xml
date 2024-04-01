@@ -85,7 +85,6 @@
 <select id="getAllProductNames" resultType="string">
     SELECT prod_name
     FROM product
-    ORDER BY prod_no DESC;
 </select>
 
 </mapper>

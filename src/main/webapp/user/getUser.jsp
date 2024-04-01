@@ -72,7 +72,7 @@
 </head>
 <body>
 <jsp:include page="/layout/toolbar.jsp" />
-
+<div class="container">
 	<div class = "bs-docs-section">
 		<div class="row">
 			<div class = "col-lg-12">
@@ -121,6 +121,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 			<div class="row">
 		  		<div class="col-md-12 text-center ">
 		  			<button type="button" class="btn btn-primary" id = "edit">edit profile</button>
