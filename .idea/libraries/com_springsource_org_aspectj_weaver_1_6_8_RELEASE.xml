@@ -40,6 +40,7 @@
       <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/spring-webflux-5.2.5.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/spring-webmvc-5.2.5.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/spring-websocket-5.2.5.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/gson-2.10.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

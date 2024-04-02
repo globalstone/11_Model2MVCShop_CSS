@@ -61,6 +61,10 @@
 
 	<!-- Bootstrap 4 JS bundle (includes Popper.js) -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	<!-- 카카오톡 로그인 JS -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+
 
 
 
@@ -69,7 +73,6 @@
    	
    	<!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
-
 		$(function () {
 			// DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$("#userId").focus();
