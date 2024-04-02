@@ -9,4 +9,6 @@ public interface KakaoDao {
     public void kakaoinsert(HashMap<String, Object> userInfo) throws Exception;
 
     public Kakao findkakao(HashMap<String, Object> userInfo) throws Exception;
+
+    public Kakao kakaoNumber(Kakao userInfo) throws Exception;
 }

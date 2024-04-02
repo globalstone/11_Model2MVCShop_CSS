@@ -1,6 +1,6 @@
 package com.model2.mvc.service.kakao.impl;
 
-import com.fasterxml.jackson.core.JsonParser;
+import com.google.gson.JsonParser;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.model2.mvc.service.domain.Kakao;
@@ -10,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
@@ -57,7 +55,7 @@ public class KakaoServiceImpl implements KakaoService {
         Kakao result = kakaoDao.findkakao(userInfo);
         // 위 코드는 먼저 정보가 저장되있는지 확인하는 코드.
         System.out.println("S:" + result);
-        if(result==null) {
+        if (result == null) {
             // result가 null이면 정보가 저장이 안되있는거므로 정보를 저장.
             kakaoDao.kakaoinsert(userInfo);
             // 위 코드가 정보를 저장하기 위해 Repository로 보내는 코드임.
@@ -68,5 +66,67 @@ public class KakaoServiceImpl implements KakaoService {
             return result;
             // 정보가 이미 있기 때문에 result를 리턴함.
         }
+    }
+
+    public String getAccessToken(String authorize_code) throws Exception {
+        String access_Token = "";
+        String refresh_Token = "";
+        String reqURL = "https://kauth.kakao.com/oauth/token";
+
+        try {
+            URL url = new URL(reqURL);
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+            //    POST 요청을 위해 기본값이 false인 setDoOutput을 true로
+
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+
+            //    POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+            StringBuilder sb = new StringBuilder();
+            sb.append("grant_type=authorization_code");
+            sb.append("&client_id=070aeade687be812b74c91bedf42e6ec");  //본인이 발급받은 key
+            sb.append("&redirect_uri=http://localhost:8080/member/kakaoLogin");     // 본인이 설정해 놓은 경로
+            sb.append("&code=" + authorize_code);
+            bw.write(sb.toString());
+            bw.flush();
+
+            //    결과 코드가 200이라면 성공
+            int responseCode = conn.getResponseCode();
+            System.out.println("responseCode : " + responseCode);
+
+            //    요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line = "";
+            String result = "";
+            while ((line = br.readLine()) != null) {
+                result += line;
+            }
+            System.out.println("response body : " + result);
+
+            //    Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
+            JsonParser parser = new JsonParser();
+            JsonElement element = parser.parse(result);
+
+            access_Token = element.getAsJsonObject().get("access_token").getAsString();
+            refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
+
+            System.out.println("access_token : " + access_Token);
+            System.out.println("refresh_token : " + refresh_Token);
+
+            br.close();
+            bw.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return access_Token;
+    }
+
+    public Kakao kakaoNumber(Kakao userInfo) throws Exception {
+        return kakaoDao.kakaoNumber(userInfo);
     }
 }
