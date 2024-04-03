@@ -22,53 +22,9 @@ public class KakaoServiceImpl implements KakaoService {
     @Qualifier("kakaoDaoImpl")
     private KakaoDao kakaoDao;
 
-    public Kakao getUserInfo(String access_Token) throws Exception {
-        HashMap<String, Object> userInfo = new HashMap<String, Object>();
-        String reqURL = "https://kapi.kakao.com/v2/user/me";
-        try {
-            URL url = new URL(reqURL);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Authorization", "Bearer " + access_Token);
-            int responseCode = conn.getResponseCode();
-            System.out.println("responseCode : " + responseCode);
-            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String line = "";
-            String result = "";
-            while ((line = br.readLine()) != null) {
-                result += line;
-            }
-            System.out.println("response body : " + result);
-            JsonParser parser = new JsonParser();
-            JsonElement element = parser.parse(result);
-            JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-            JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
-            String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-            String email = kakao_account.getAsJsonObject().get("email").getAsString();
-            userInfo.put("nickname", nickname);
-            userInfo.put("email", email);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // catch 아래 코드 추가.
-        Kakao result = kakaoDao.findkakao(userInfo);
-        // 위 코드는 먼저 정보가 저장되있는지 확인하는 코드.
-        System.out.println("S:" + result);
-        if (result == null) {
-            // result가 null이면 정보가 저장이 안되있는거므로 정보를 저장.
-            kakaoDao.kakaoinsert(userInfo);
-            // 위 코드가 정보를 저장하기 위해 Repository로 보내는 코드임.
-            return kakaoDao.findkakao(userInfo);
-            // 위 코드는 정보 저장 후 컨트롤러에 정보를 보내는 코드임.
-            //  result를 리턴으로 보내면 null이 리턴되므로 위 코드를 사용.
-        } else {
-            return result;
-            // 정보가 이미 있기 때문에 result를 리턴함.
-        }
-    }
-
-    public String getAccessToken(String authorize_code) throws Exception {
+    // 카카오 로그인
+    @Override
+    public String getAccessToken (String authorize_code) {
         String access_Token = "";
         String refresh_Token = "";
         String reqURL = "https://kauth.kakao.com/oauth/token";
@@ -87,8 +43,8 @@ public class KakaoServiceImpl implements KakaoService {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
-            sb.append("&client_id=070aeade687be812b74c91bedf42e6ec");  //본인이 발급받은 key
-            sb.append("&redirect_uri=http://localhost:8080/member/kakaoLogin");     // 본인이 설정해 놓은 경로
+            sb.append("&client_id=8df753a4b334db7b6d9d4824b176caf5");  //본인이 발급받은 key
+            sb.append("&redirect_uri=http://localhost:8080/kakao/login");     // 본인이 설정해 놓은 경로
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
@@ -101,6 +57,7 @@ public class KakaoServiceImpl implements KakaoService {
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line = "";
             String result = "";
+
             while ((line = br.readLine()) != null) {
                 result += line;
             }
@@ -126,7 +83,64 @@ public class KakaoServiceImpl implements KakaoService {
         return access_Token;
     }
 
-    public Kakao kakaoNumber(Kakao userInfo) throws Exception {
-        return kakaoDao.kakaoNumber(userInfo);
+    // 카카오 로그인 정보 저장
+    @Override
+    public Kakao getUserInfo (String access_Token) throws Exception {
+
+        //    요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
+        HashMap<String, Object> userInfo = new HashMap<String, Object>();
+        String reqURL = "https://kapi.kakao.com/v2/user/me";
+        try {
+            URL url = new URL(reqURL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+
+            //    요청에 필요한 Header에 포함될 내용
+            conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+
+            int responseCode = conn.getResponseCode();
+            System.out.println("responseCode : " + responseCode);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+            String line = "";
+            String result = "";
+
+            while ((line = br.readLine()) != null) {
+                result += line;
+            }
+            System.out.println("response body : " + result);
+
+            JsonParser parser = new JsonParser();
+            JsonElement element = parser.parse(result);
+
+            JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
+            JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+
+            String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+            String email = kakao_account.getAsJsonObject().get("email").getAsString();
+
+            userInfo.put("nickname", nickname);
+            userInfo.put("email", email);
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        Kakao result = kakaoDao.findkakao(userInfo);
+        System.out.println("S:" + result);
+        if (result == null) {
+            kakaoDao.kakaoinsert(userInfo);
+            return kakaoDao.findkakao(userInfo);
+        } else {
+            return result;
+        }
     }
+
+        @Override
+        public Kakao kakaoNumber(Kakao userInfo) throws Exception {
+            return kakaoDao.kakaoNumber(userInfo);
+        }
+
 }

@@ -34,7 +34,7 @@ public class KakaoDaoImpl implements KakaoDao {
         return sqlSession.selectOne("KakaoMapper.findKakao", userInfo);
     }
 
-    public Kakao kakaoNumber(Kakao userInfo) {
+    public Kakao kakaoNumber(Kakao userInfo) throws Exception{
         return sqlSession.selectOne("KakaoMapper.kakaoNumber",userInfo);
     }
 }

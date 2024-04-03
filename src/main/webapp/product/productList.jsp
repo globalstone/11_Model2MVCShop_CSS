@@ -219,11 +219,11 @@
 								minLength: 1
 							});
 						} else {
-							console.error("Invalid data format:", data);
+							console.error("데이터 형식확인용 :", data);
 						}
 					},
 					error: function () {
-						console.error("상품 목록을 불러오는데 실패했습니다.");
+						console.error("못불러왔음 ");
 					}
 				});
 			});

@@ -73,6 +73,25 @@
    	
    	<!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
+		//<![CDATA[
+		// 사용할 앱의 JavaScript 키를 설정해 주세요.
+		$(document).ready(function() {
+			Kakao.init('156ad557ed4df3d2e6fa9905dae81a56');
+			// 카카오 로그인 버튼을 생성합니다.
+			Kakao.Auth.createLoginButton({
+				container: '#kakao-login-btn',
+				success: function (authObj) {
+					debugger;
+					alert(JSON.stringify(authObj));
+					console.log(authObj);
+					window.location.href = "http://localhost:8080/kakao/login?code=" + authObj.code;
+				},
+				fail: function (err) {
+					alert(JSON.stringify(err));
+				}
+			});
+		});
+		//]]>
 		$(function () {
 			// DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$("#userId").focus();
@@ -269,6 +288,11 @@
 			  		<h1>Model2 MVC Shop</h1>
 			  		<p>로그인 후 사용가능...</p>
 			  		<p>로그인 전 검색만 가능합니다.</p>
+					<!-- 카카오 -->
+				</div>
+				<div id="kakao-login-btn"></div>
+				<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=8df753a4b334db7b6d9d4824b176caf5&redirect_uri=http://localhost:8080/kakao/login&response_type=code">
+				</a>
 			  		<p>회원가입 하세요.</p>
 			  	</div>
 	        </div>
