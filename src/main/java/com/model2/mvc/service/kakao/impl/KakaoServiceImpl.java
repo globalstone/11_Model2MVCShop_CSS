@@ -44,8 +44,9 @@ public class KakaoServiceImpl implements KakaoService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=8df753a4b334db7b6d9d4824b176caf5");  //본인이 발급받은 key
-            sb.append("&redirect_uri=http://localhost:8080/kakao/login");     // 본인이 설정해 놓은 경로
+            sb.append("&redirect_uri=http://192.168.0.17:8080/kakao/login&response_type=code");     // 본인이 설정해 놓은 경로
             sb.append("&code=" + authorize_code);
+            System.out.println("authorize_code : " + authorize_code);
             bw.write(sb.toString());
             bw.flush();
 
@@ -90,6 +91,7 @@ public class KakaoServiceImpl implements KakaoService {
         //    요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
         HashMap<String, Object> userInfo = new HashMap<String, Object>();
         String reqURL = "https://kapi.kakao.com/v2/user/me";
+        Kakao insert = new Kakao();
         try {
             URL url = new URL(reqURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -122,20 +124,30 @@ public class KakaoServiceImpl implements KakaoService {
 
             userInfo.put("nickname", nickname);
             userInfo.put("email", email);
+            insert.setK_name(nickname);
+            insert.setK_email(email);
 
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-        Kakao result = kakaoDao.findkakao(userInfo);
+//        Kakao result = kakaoDao.findkakao(userInfo);
+//        System.out.println("S:" + result);
+//        if (result == null) {
+//            kakaoDao.kakaoinsert(insert);
+//            return kakaoDao.findkakao(userInfo);
+//        } else {
+//            return result;
+//        }
+        Kakao result = kakaoDao.findByEmail(userInfo.get("email").toString());
         System.out.println("S:" + result);
         if (result == null) {
-            kakaoDao.kakaoinsert(userInfo);
-            return kakaoDao.findkakao(userInfo);
-        } else {
-            return result;
+            // 사용자가 데이터베이스에 존재하지 않는 경우, 사용자 정보를 저장합니다.
+            kakaoDao.kakaoinsert(insert);
+            result = kakaoDao.findByEmail(userInfo.get("email").toString());
         }
+        return result;
     }
 
         @Override

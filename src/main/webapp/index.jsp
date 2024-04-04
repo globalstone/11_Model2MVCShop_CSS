@@ -84,7 +84,7 @@
 					debugger;
 					alert(JSON.stringify(authObj));
 					console.log(authObj);
-					window.location.href = "http://localhost:8080/kakao/login?code=" + authObj.code;
+					window.location.href = "http://192.168.0.17:8080/main.jsp";
 				},
 				fail: function (err) {
 					alert(JSON.stringify(err));
@@ -290,8 +290,8 @@
 			  		<p>로그인 전 검색만 가능합니다.</p>
 					<!-- 카카오 -->
 				</div>
-				<div id="kakao-login-btn"></div>
-				<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=8df753a4b334db7b6d9d4824b176caf5&redirect_uri=http://localhost:8080/kakao/login&response_type=code">
+				<div id="kakao"></div>
+				<a class="p-2" id = "kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=8df753a4b334db7b6d9d4824b176caf5&redirect_uri=http://192.168.0.17:8080/kakao/login&response_type=code">
 				</a>
 			  		<p>회원가입 하세요.</p>
 			  	</div>

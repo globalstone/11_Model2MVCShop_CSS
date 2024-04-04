@@ -8,13 +8,17 @@
 
     <!-- 정보 찾기 -->
     <select id="findKakao" parameterType="java.util.HashMap" resultType="kakao">
-        select * from kakao_table where k_name=#{K_NAME, jdbcType=VARCHAR} and k_email=#{email, jdbcType=VARCHAR}
+        select * from kakao_table where k_name=#{k_name, jdbcType=VARCHAR} and k_email=#{k_email, jdbcType=VARCHAR}
     </select>
 
     <!-- 정보 저장 -->
-    <insert id="kakaoInsert" parameterType="java.util.HashMap">
-        insert into kakao_table(k_name, k_email)
-        values(#{K_NAME, jdbcType=VARCHAR, javaType=java.lang.String, typeHandler=org.apache.ibatis.type.StringTypeHandler}, #{email, jdbcType=VARCHAR})
+    <insert id="kakaoInsert" parameterType="kakao">
+        insert into kakao_table
+        values((seq_product_prod_no.NEXTVAL),#{k_name, jdbcType=VARCHAR}, #{k_email, jdbcType=VARCHAR})
     </insert>
 
+
+    <select id="findByEmail" parameterType="string" resultType="com.model2.mvc.service.domain.Kakao">
+        SELECT * FROM kakao_table WHERE k_email = #{k_email}
+    </select>
 </mapper>

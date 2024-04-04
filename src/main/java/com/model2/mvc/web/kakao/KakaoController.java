@@ -24,15 +24,16 @@ public class KakaoController {
     @RequestMapping(value="/login", method=RequestMethod.GET)
     public String kakaoLogin(@RequestParam(value = "code", required = false) String code, Model model,
                              HttpSession session) throws Exception{
-        System.out.println("#########" + code);
         String access_Token = ms.getAccessToken(code);
         Kakao userInfo = ms.getUserInfo(access_Token);
-        Kakao number = ms.kakaoNumber(userInfo);
-        System.out.println("넘버확인용" + number);
+        System.out.println("#########" + code);
+//        Kakao number = ms.kakaoNumber(userInfo);
+//        System.out.println("넘버확인용" + number);
         session.invalidate();
         session.setAttribute("kakaoN", userInfo.getK_name());
         session.setAttribute("kakaoE", userInfo.getK_email());
-        session.setAttribute("kakaoNumber", number.getK_number());
+//        session.setAttribute("kakaoNumber", number.getK_number());
+
         return "redirect:/index.jsp";
     }
 

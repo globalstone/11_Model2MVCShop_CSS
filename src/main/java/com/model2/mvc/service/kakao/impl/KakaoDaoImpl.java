@@ -24,8 +24,8 @@ public class KakaoDaoImpl implements KakaoDao {
     }
 
     @Override
-    public void kakaoinsert(HashMap<String, Object> userInfo) throws Exception {
-        sqlSession.insert("KakaoMapper.kakaoInsert",userInfo);
+    public void kakaoinsert(Kakao kakao) throws Exception {
+        sqlSession.insert("KakaoMapper.kakaoInsert",kakao);
     }
 
     public Kakao findkakao(HashMap<String, Object> userInfo) throws Exception {
@@ -36,5 +36,8 @@ public class KakaoDaoImpl implements KakaoDao {
 
     public Kakao kakaoNumber(Kakao userInfo) throws Exception{
         return sqlSession.selectOne("KakaoMapper.kakaoNumber",userInfo);
+    }
+    public Kakao findByEmail(String email){
+        return sqlSession.selectOne("KakaoMapper.findByEmail", email);
     }
 }

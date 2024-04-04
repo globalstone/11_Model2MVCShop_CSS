@@ -9,4 +9,5 @@ public interface KakaoService {
     public String getAccessToken(String authorize_code) throws Exception;
 
     public Kakao kakaoNumber(Kakao userInfo) throws Exception;
+
 }

@@ -6,9 +6,11 @@ import java.util.HashMap;
 
 public interface KakaoDao {
 
-    public void kakaoinsert(HashMap<String, Object> userInfo) throws Exception;
+    public void kakaoinsert(Kakao kakao) throws Exception;
 
     public Kakao findkakao(HashMap<String, Object> userInfo) throws Exception;
 
     public Kakao kakaoNumber(Kakao userInfo) throws Exception;
+
+    public Kakao findByEmail(String email);
 }
